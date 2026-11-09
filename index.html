@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#0F5A8E">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="media/favicon.png">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="دليل المختبرات">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>دليل المختبرات</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: phone-first app in the field-rounds visual language — blue gradient header, pale-blue ground, white cards, 3-tab bottom bar */
+:root{
+  --bg:#F2F7FB; --card:#FFFFFF; --ink:#15293A; --muted:#4B5E6D; --line:#D9E4EC; --line-2:#C5D4DF;
+  --brand:#0F5A8E; --brand-2:#1677B5; --brand-soft:#E4F1FA; --teal:#0E7468; --teal-soft:#E1F3F0;
+  --warn:#A3311F; --warn-soft:#FBEAE6; --amber:#9A5B07; --amber-soft:#FCF1DF; --on-brand:#FFFFFF;
+  --f:"Cairo","Segoe UI",Tahoma,sans-serif; color-scheme:only light;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+.ltr{direction:ltr;unicode-bidi:isolate;white-space:nowrap;display:inline-block;color:inherit!important;font-size:inherit!important;font-weight:inherit!important}
+html,body{background:var(--bg)}
+body{color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.65;padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#0F5A8E}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid #1692D1;outline-offset:2px}
+
+.app{max-width:640px;margin:0 auto;min-height:100%;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:linear-gradient(135deg,#0F5A8E 0%,#1677B5 100%);color:#fff;
+  padding:14px max(18px,env(safe-area-inset-right,0px)) 14px max(18px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:12px;border-radius:0 0 18px 18px}
+.top .back{border:0;background:rgba(255,255,255,.16);color:#fff;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none}
+.wlogo{width:64px;height:64px;object-fit:contain;display:block}
+.badge{width:68px;height:68px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;box-shadow:0 4px 14px rgba(5,40,70,.25);flex:none}
+.badge img{width:52px;height:52px;object-fit:contain}
+.top.center{justify-content:center;padding-block:14px 16px}
+.brandhead{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;line-height:1.35;min-width:0}
+.brandhead small{font-size:12px;opacity:.9}
+.brandhead b{font-size:18px;font-weight:700;text-wrap:balance}
+.top .mark{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:none}
+.top .tt{display:flex;flex-direction:column;line-height:1.35;min-width:0;flex:1}
+.card.install{gap:12px;margin-top:8px;background:linear-gradient(135deg,#0F5A8E 0%,#1677B5 100%);border:0;color:#fff}
+.ins-row{display:flex;gap:12px;align-items:center}
+.ins-ic{width:44px;height:44px;object-fit:contain;flex:none}
+.ins-tx{display:flex;flex-direction:column;line-height:1.45}
+.ins-tx b{font-size:16px}
+.ins-tx span{font-size:13px;opacity:.9}
+.ins-btn{border:0;border-radius:10px;height:46px;background:#fff;color:#0F5A8E;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
+.ssticky{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:4;background:var(--bg);padding:6px 0 8px;display:flex;flex-direction:column;gap:8px}
+.schips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.schips::-webkit-scrollbar{display:none}
+.schips button{flex:none;height:36px;padding:0 13px;border-radius:999px;border:1px solid var(--line-2);background:var(--card);font-size:13.5px;font-weight:600;color:var(--ink)}
+.schips button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.scols{display:flex;gap:3px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.scols::-webkit-scrollbar{display:none}
+.scols button{flex:none}
+.scols button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line-2);background:var(--card);display:grid;place-items:center;padding:0}
+.scols button i{width:17px;height:17px;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.scols button[aria-pressed="true"]{border:2px solid var(--brand);box-shadow:0 0 0 2px var(--brand-soft)}
+.scount{margin:0;font-size:13px;color:var(--muted);font-weight:600}
+.slist{display:flex;flex-direction:column;gap:10px}
+.sup{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.sup img{width:60px;height:60px;flex:none;border-radius:10px;background:#fff;border:1px solid var(--line)}
+.sx{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.sx>b{font-size:15.5px;line-height:1.5}
+.sen{direction:ltr;text-align:right;font-size:11.5px;color:var(--muted);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sgl{font-size:13px;font-weight:700;color:var(--muted);margin:8px 2px 0}
+.scs{display:flex;flex-direction:column;gap:5px;margin-top:4px}
+.scp{display:flex;align-items:center;gap:8px;width:100%;min-height:38px;border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:4px 10px;font:inherit;color:var(--ink);text-align:start}
+.scp>span{font-size:11px;font-weight:700;color:var(--brand);width:62px;flex:none;direction:ltr;text-align:right}
+.scp b{flex:1;direction:ltr;text-align:right;font-size:15px;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.scp svg{color:var(--brand);flex:none}
+.scp.none b{color:var(--muted);font-size:13px;font-weight:600}
+.scp:active{background:var(--brand-soft)}
+.str{margin-top:4px;font-size:13px}
+.str summary{cursor:pointer;font-weight:700;color:var(--brand);padding:4px 0}
+.trr{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.trr small{direction:ltr;text-align:right;color:var(--muted);font-size:11px}
+.snote{margin:4px 0 0;display:flex;gap:6px;align-items:flex-start;font-size:12.5px;color:var(--amber);background:var(--amber-soft);border-radius:8px;padding:6px 8px}
+.snote svg{flex:none;margin-top:2px}
+.credit-by{margin:22px 0 4px;text-align:center;font-size:13.5px;color:var(--muted)}
+.credit-by b{color:var(--brand);font-weight:700}
+.credit-by small{display:block;font-size:12.5px;margin-top:2px}
+.top .minilogo{width:46px;height:46px;object-fit:contain;flex:none;display:block}
+.top .tt small{font-size:12px;opacity:.9}
+.top .tt b{font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.page{padding:20px max(18px,env(safe-area-inset-right,0px)) 8px max(18px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:16px}
+h1{margin:0;font-size:23px;font-weight:700;color:var(--brand);line-height:1.35;text-wrap:balance}
+.sub{margin:-8px 0 0;color:var(--muted);font-size:14px}
+h3{margin:0;font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px}
+
+/* search */
+.search{position:relative;display:block}
+.search svg{position:absolute;inset-inline-start:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search input{width:100%;height:50px;border:1px solid var(--line-2);border-radius:12px;background:var(--card);font-size:16px;padding:0 44px 0 14px}
+
+/* guide list */
+.group{display:flex;flex-direction:column;gap:8px}
+.glabel{font-size:13px;font-weight:600;color:var(--muted);padding-inline:4px}
+.row{all:unset;box-sizing:border-box;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;min-height:68px}
+.row:focus-visible{outline:2px solid #1692D1;outline-offset:2px}
+.row .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;flex:none;background:var(--brand-soft);color:var(--brand)}
+.row .ic.t{background:var(--teal-soft);color:var(--teal)}
+.row .ic.w{background:var(--warn-soft);color:var(--warn)}
+.row .ic.a{background:var(--amber-soft);color:var(--amber)}
+.row .tx{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.45}
+.row .tx b{font-size:15px}
+.row .tx span{font-size:13px;color:var(--muted)}
+.row .chev{color:var(--muted);flex:none}
+.empty{padding:28px 16px;text-align:center;color:var(--muted);background:var(--card);border:1px dashed var(--line-2);border-radius:12px}
+
+/* guide detail */
+.hero{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;gap:14px;align-items:flex-start}
+.hero .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex:none;background:var(--brand-soft);color:var(--brand)}
+.hero p{margin:0;font-size:14.5px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.steps > li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.steps > li:first-child{border-top:0;padding-top:2px}
+.num{width:34px;height:34px;border-radius:50%;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.steps b{display:block;font-size:15px;line-height:1.45}
+.steps p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.steps ul{margin:4px 0 0;padding:0 18px 0 0;font-size:14px;color:var(--muted);list-style:disc}
+.steps ul li{padding:1px 0}
+.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ticks li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;align-items:start;font-size:14.5px}
+.ticks .b{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;margin-top:1px}
+.ticks.ok .b,.ticks li.ok .b{background:var(--teal-soft);color:var(--teal)}
+.ticks.no .b,.ticks li.no .b{background:var(--warn-soft);color:var(--warn)}
+.ticks.info .b{background:var(--brand-soft);color:var(--brand)}
+.card.warn{border-color:transparent;background:var(--warn-soft)}
+.card.warn h3{color:var(--warn)}
+.card.ok h3{color:var(--teal)}
+.doc{gap:12px}
+.doc-th{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;max-height:240px}
+.doc-th img{display:block;width:100%;height:auto}
+.doc-tx{display:flex;flex-direction:column;gap:6px}
+.doc-tx h3{margin:0;font-size:17px;color:var(--brand)}
+.doc-tx p{margin:0;font-size:14px}
+.doc-en{direction:ltr;text-align:right;color:var(--muted);font-size:13px!important}
+.doc-tag{align-self:flex-start;font-size:12px;font-weight:700;color:var(--brand);background:var(--brand-soft);border-radius:999px;padding:2px 10px}
+.doc-notes{background:var(--brand-soft);border-radius:10px;padding:10px 12px;margin-top:4px}
+.doc-notes b{display:flex;align-items:center;gap:6px;color:var(--brand);font-size:14px}
+.doc-notes ul{margin:6px 0 0;padding-inline-start:20px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.doc-btns{display:flex;gap:8px;margin-top:6px}
+.doc-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:10px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:14.5px}
+.doc-btn.alt{background:var(--card);color:var(--brand);border:1px solid var(--line-2)}
+.callout{display:flex;gap:10px;align-items:flex-start;background:var(--amber-soft);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:14px}
+.callout svg{color:var(--amber);flex:none;margin-top:2px}
+.credit{font-size:12.5px;color:var(--muted);text-align:center}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{background:var(--warn-soft);color:var(--warn);font-weight:700;border-radius:999px;padding:4px 12px;font-size:13.5px;direction:ltr}
+.ref{width:100%;border-collapse:collapse;font-size:14px}
+.ref th,.ref td{padding:10px 6px;border-bottom:1px solid var(--line);text-align:start;vertical-align:middle}
+.ref th{font-size:12.5px;color:var(--muted);font-weight:600}
+.ref td.n{direction:ltr;text-align:left;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ref td small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-inline-end:6px;vertical-align:middle}
+.tw{overflow-x:auto}
+.legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.legend > div{background:var(--bg);border-radius:10px;padding:10px 12px;font-size:13.5px}
+.legend b{display:block;font-size:14px}
+
+/* afinion */
+.seg{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.seg button{flex:none;border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:0 14px;height:42px;font-size:14px;font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.kv > div{background:var(--bg);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kv span{font-size:12.5px;color:var(--muted)}
+.kv b{font-size:15px;line-height:1.4}
+.kv .wide{grid-column:1 / -1}
+.code{display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:10px;padding:8px 8px 8px 12px}
+.code .l{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.4}
+.code .l span{font-size:12.5px;color:var(--muted)}
+.code .l b{font-size:16px;direction:ltr;text-align:right;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.copy{border:1px solid var(--line-2);background:var(--card);border-radius:10px;height:40px;padding:0 12px;font-size:13px;font-weight:600;color:var(--brand);flex:none}
+.err{display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.err:first-child{border-top:0;padding-top:0}
+.err .c{background:var(--brand-soft);color:var(--brand);border-radius:10px;height:40px;display:grid;place-items:center;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums;direction:ltr}
+.err .c.long{font-size:11px;line-height:1.2;text-align:center;padding:2px}
+.err b{display:block;font-size:14.5px;line-height:1.45}
+.err p{margin:3px 0 0;font-size:13.5px;color:var(--muted)}
+.err p + p{margin-top:6px}
+.err .why{color:var(--ink);font-weight:600}
+.repeat{display:inline-block;background:var(--teal-soft);color:var(--teal);font-size:12px;font-weight:600;border-radius:6px;padding:1px 8px;margin-top:4px}
+
+/* converter */
+.pair{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);gap:8px;align-items:end}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld label{font-size:13px;font-weight:600;color:var(--muted);text-align:center}
+.fld input{height:58px;border:1px solid var(--line-2);border-radius:12px;background:var(--card);text-align:center;font-size:24px;font-weight:700;direction:ltr;font-variant-numeric:tabular-nums;width:100%}
+.res{height:58px;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-size:24px;font-weight:700;direction:ltr;font-variant-numeric:tabular-nums}
+.dirseg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.dirseg button{height:48px;padding:0 8px;font-size:13.5px}
+.eq{height:58px;display:grid;place-items:center;color:var(--muted);font-weight:700}
+.status{border-radius:10px;padding:10px 12px;font-size:14px;font-weight:600;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
+.status.in{background:var(--teal-soft);color:var(--teal)}
+.status.hi{background:var(--warn-soft);color:var(--warn)}
+.status.lo{background:var(--amber-soft);color:var(--amber)}
+.status.none{background:var(--bg);color:var(--muted);font-weight:500}
+
+/* bottom bar */
+.nav{position:fixed;inset:auto 0 0 0;z-index:8;background:var(--card);border-top:1px solid var(--line);padding:6px max(10px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px))}
+.nav .in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.tab{border:0;background:none;height:62px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--muted);font-size:12.5px;font-weight:600}
+.tab .p{width:56px;height:30px;border-radius:999px;display:grid;place-items:center}
+.tab[aria-current="page"]{color:var(--brand)}
+.tab[aria-current="page"] .p{background:var(--brand-soft)}
+.pair2{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.art{position:relative;background:#FFFFFF;border-bottom:1px solid var(--line)}
+.art svg{display:block;width:100%;height:auto;max-width:100%}
+.cz{display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;align-items:start;border-radius:10px;padding:8px 10px;margin-top:8px}
+.cz.bad{background:var(--warn-soft)}
+.cz.ok{background:var(--teal-soft)}
+.cz .b{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;color:#fff;margin-top:2px}
+.cz.bad .b{background:#C2412C}
+.cz.ok .b{background:#0E8A7E}
+.cz .lab{font-size:12px;font-weight:700}
+.cz.bad .lab{color:var(--warn)}
+.cz.ok .lab{color:var(--teal)}
+.cz p{margin:0;font-size:14.5px;color:var(--ink)}
+.staffnote{display:flex;gap:10px;align-items:center;background:var(--brand-soft);color:var(--brand);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;font-size:15px;font-weight:600}
+.staffnote svg{flex:none}
+.courier{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,#0F5A8E 0%,#1677B5 100%);color:#fff;border-radius:14px;padding:16px}
+.courier .cl{width:92px;height:72px;border-radius:14px;background:#fff;color:#0F5A8E;display:grid;place-items:center;flex:none;overflow:hidden}
+.courier .cl img{width:80px;height:60px;object-fit:contain}
+.courier .ct{display:flex;flex-direction:column;gap:2px;min-width:0}
+.courier .ct span{font-size:12.5px;opacity:.9}
+.courier .ct b{font-size:17px}
+.courier .ct p{margin:2px 0 0;font-size:14px;opacity:.95}
+.refc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.refc .rh{display:flex;align-items:center;gap:12px}
+.refc .rh img{width:58px;height:58px;border-radius:50%;object-fit:cover;background:#fff;border:1px solid var(--line);flex:none}
+.refc .rh div{display:flex;flex-direction:column;line-height:1.4}
+.refc .rh b{font-size:17px}
+.refc .rh span{font-size:12.5px;color:var(--muted)}
+.rrow{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--bg);border-radius:10px;padding:10px 12px}
+.rrow .rl{font-size:14.5px;font-weight:600}
+.rrow .rl small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.rrow .rv{font-size:17px;font-weight:700;color:var(--brand);font-variant-numeric:tabular-nums}
+.rrow .dot{margin:0}
+.rvals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.rvals > div{background:var(--bg);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.rvals .u{font-size:12.5px;color:var(--muted);font-weight:600;direction:ltr}
+.rvals .big{font-size:21px;font-weight:700;color:var(--brand);font-variant-numeric:tabular-nums}
+.pstep{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.pstep.bad{border-color:var(--warn)}
+.pimg{all:unset;box-sizing:border-box;cursor:pointer;display:block;position:relative;background:#fff;aspect-ratio:900/672;max-width:100%}
+.pimg:focus-visible{outline:2px solid #1692D1;outline-offset:-2px}
+.pimg img{width:100%;height:100%;object-fit:cover;display:block}
+.pimg.free{aspect-ratio:auto;padding:10px 8px}
+.pimg.free .pnum{display:none}
+.pimg.free img{height:auto}
+.wimg{border-radius:10px;overflow:hidden}
+.pl{margin:4px 0 0;padding:0 18px 0 0;display:flex;flex-direction:column;gap:4px;font-size:14.5px;color:var(--muted)}
+.pl li::marker{color:var(--brand)}
+.pnum{position:absolute;top:10px;inset-inline-start:10px;width:38px;height:38px;border-radius:50%;background:#0F5A8E;color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;box-shadow:0 2px 8px rgba(5,40,70,.3)}
+.pstep.bad .pnum{background:#A3311F}
+.ptx{padding:12px 16px 16px;display:flex;flex-direction:column;gap:2px}
+.ptag{font-size:12px;font-weight:600;color:var(--brand)}
+.pstep.bad .ptag{color:var(--warn)}
+.ptx b{font-size:16.5px;line-height:1.45}
+.ptx p{margin:2px 0 0;font-size:14.5px;color:var(--muted)}
+.orig{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.orig button{all:unset;box-sizing:border-box;cursor:pointer;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;aspect-ratio:3/4;max-width:100%;position:relative}
+.orig button:focus-visible{outline:2px solid #1692D1;outline-offset:2px}
+.orig img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.orig .zoom{position:absolute;bottom:8px;inset-inline-end:8px;background:rgba(15,90,142,.92);color:#fff;border-radius:8px;padding:2px 8px;font-size:12px;font-weight:600}
+.viewer{position:fixed;inset:0;z-index:40;background:rgba(6,18,28,.94);display:flex;flex-direction:column}
+.viewer .vt{display:flex;align-items:center;gap:10px;color:#fff;padding:calc(10px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+.viewer .vt b{flex:1;min-width:0;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.viewer .vt button{border:0;background:rgba(255,255,255,.16);color:#fff;width:44px;height:44px;border-radius:12px;display:grid;place-items:center}
+.viewer .vb{flex:1;overflow:auto;display:flex;justify-content:center;padding:4px 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.viewer .vb img{max-width:min(100%,900px);height:auto;align-self:flex-start;border-radius:10px;background:#fff}
+.viewer .hint{color:#C9D9E5;font-size:12.5px;text-align:center;padding:0 16px calc(10px + env(safe-area-inset-bottom,0px))}
+.toast{position:fixed;inset-inline:0;bottom:calc(90px + env(safe-area-inset-bottom,0px));margin:0 auto;width:max-content;max-width:calc(100% - 32px);z-index:30;background:var(--ink);color:var(--bg);border-radius:12px;padding:10px 16px;font-size:14px}
+</style>
+
+<div class="app" dir="rtl" lang="ar">
+  <header class="top" id="top"></header>
+  <main id="view"></main>
+</div>
+<nav class="nav" dir="rtl" aria-label="الأقسام"><div class="in" id="tabs"></div></nav>
+<div class="viewer" id="viewer" dir="rtl" hidden role="dialog" aria-modal="true" aria-labelledby="vtt"><div class="vt"><button type="button" id="vclose" aria-label="إغلاق"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button><b id="vtt"></b></div><div class="vb"><img id="vimg" alt=""></div><div class="hint">لحفظ الصورة على جوالك: اضغط عليها مطولًا ثم اختر «حفظ الصورة».</div></div>
+<div class="toast" id="toast" dir="rtl" role="status" hidden></div>
+
+<script>
+document.documentElement.setAttribute("dir","rtl");document.documentElement.setAttribute("lang","ar");
+/* numbers/ranges keep left-to-right order inside Arabic text */
+const N=s=>String(s).replace(/(\d[\d.]*[–-]\d[\d.]*(?:°C|%|G)?|\d[\d.]*(?:°C|%|G))/g,'<span class="ltr">$1</span>');
+/* ============ icons ============ */
+const I={
+  down:'<path d="M12 4v11"></path><path d="M7 10l5 5 5-5"></path><path d="M5 20h14"></path>',
+  spin:'<circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="12" cy="6.5" r="1.6"></circle><circle cx="12" cy="17.5" r="1.6"></circle><circle cx="6.5" cy="12" r="1.6"></circle><circle cx="17.5" cy="12" r="1.6"></circle>',
+  doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h4"></path>',
+  copy:'<rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path>',
+  back:'<path d="M9 6l6 6-6 6"></path>',
+  chev:'<path d="M15 6l-6 6 6 6"></path>',
+  search:'<circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>',
+  flask:'<path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"></path><path d="M7.5 15h9"></path>',
+  book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"></path><path d="M4 21V5M9 7h6"></path>',
+  device:'<rect x="5" y="3" width="14" height="18" rx="2.5"></rect><rect x="8" y="6" width="8" height="6" rx="1"></rect><path d="M9 16h6"></path>',
+  swap:'<path d="M7 7h11l-3-3M17 17H6l3 3"></path>',
+  syringe:'<path d="M18 2l4 4M17 7l3-3M19 9 8.7 19.3a2 2 0 0 1-2.8 0L4.7 18a2 2 0 0 1 0-2.8L15 5M9 11l4 4M5 19l-3 3"></path>',
+  tube:'<path d="M9 3h6M10 3v15a2 2 0 0 0 4 0V3"></path><path d="M10 12h4"></path>',
+  drop:'<path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"></path>',
+  box:'<path d="M3 8l9-5 9 5v8l-9 5-9-5z"></path><path d="M3 8l9 5 9-5M12 13v8"></path>',
+  cup:'<path d="M6 4h12l-1.5 16h-9z"></path><path d="M6.5 9h11"></path>',
+  stool:'<rect x="9" y="2" width="6" height="14" rx="2"></rect><path d="M12 16v6"></path>',
+  chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path>',
+  check:'<path d="m5 12 4.5 4.5L19 7"></path>',
+  x:'<path d="M6 6l12 12M18 6 6 18"></path>',
+  info:'<circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path>',
+  alert:'<path d="M12 3 2 20h20z"></path><path d="M12 10v4M12 17h.01"></path>',
+  clock:'<circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path>',
+  phone:'<rect x="6" y="2" width="12" height="20" rx="3"></rect><path d="M12 18h.01"></path>'
+};
+const svg=(k,s=22,w=1.9)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[k]}</svg>`;
+
+/* ============ hemolysis illustrations (flat SVG, fixed palette on a light panel) ============ */
+const SK="#F4CFB3",SK2="#E6B795",GL="#86CBD9",BL="#B3262B",GLS="#FFFFFF",STK="#9DB3C3",INK="#15293A",OK="#0E9C8E",BAD="#D2412C";
+const okMark=(x,y)=>`<circle cx="${x}" cy="${y}" r="13" fill="${OK}"/><path d="M${x-6} ${y} l4 4 l8 -8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+const badMark=(x,y)=>`<circle cx="${x}" cy="${y}" r="13" fill="${BAD}"/><path d="M${x-5} ${y-5} l10 10 M${x+5} ${y-5} l-10 10" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`;
+const tubeV=(x,y,h,cap,fill,lvl)=>`<rect x="${x-11}" y="${y}" width="22" height="13" rx="3" fill="${cap}"/><path d="M${x-9} ${y+13} v${h} a9 9 0 0 0 18 0 v-${h}" fill="${GLS}" stroke="${STK}" stroke-width="1.5"/>${fill?`<path d="M${x-8} ${y+13+h*(1-lvl)} v${h*lvl} a8 8 0 0 0 16 0 v-${h*lvl} z" fill="${fill}"/>`:""}`;
+const arm=(y)=>`<path d="M-10 ${y} H250 q40 0 52 16 q6 10 -6 16 q-14 6 -46 2 H-10 z" fill="${SK}"/><path d="M-10 ${y+34} H250" stroke="${SK2}" stroke-width="2"/>`;
+const ART={
+ needle:`${[["#2E9D58","21G",52,6,1],["#2B2B2B","22G",96,5,1],["#F08A24","25G",140,3,0]].map(([c,l,y,w,g])=>`<rect x="70" y="${y-11}" width="40" height="22" rx="5" fill="${c}"/><rect x="62" y="${y-6}" width="10" height="12" rx="2" fill="${c}" opacity=".7"/><line x1="110" y1="${y}" x2="232" y2="${y}" stroke="#8A97A3" stroke-width="${w}" stroke-linecap="round"/><text x="262" y="${y+5}" font-size="15" font-weight="700" fill="${INK}" text-anchor="middle">${l}</text>${g?okMark(30,y):badMark(30,y)}`).join("")}`,
+ vein:`${arm(70)}<path d="M-10 92 C60 80 120 104 190 88 S260 84 300 92" fill="none" stroke="#5B86C7" stroke-width="5" stroke-linecap="round" opacity=".8"/><g transform="rotate(-18 200 86)"><rect x="200" y="78" width="70" height="16" rx="4" fill="${GL}"/><rect x="186" y="82" width="16" height="8" rx="2" fill="#2E9D58"/><line x1="140" y1="86" x2="188" y2="86" stroke="#8A97A3" stroke-width="3" stroke-linecap="round"/></g><ellipse cx="128" cy="112" rx="22" ry="10" fill="${GL}"/>${okMark(40,36)}<text x="62" y="41" font-size="13" font-weight="600" fill="${INK}">ثبّت الإبرة</text>`,
+ tourniquet:`${arm(66)}<rect x="96" y="58" width="34" height="50" rx="6" fill="${OK}"/><rect x="104" y="50" width="18" height="14" rx="3" fill="#0B7469"/><g transform="translate(232 44)"><circle r="26" fill="#fff" stroke="${INK}" stroke-width="3"/><path d="M0 -15 V0 L10 7" stroke="${INK}" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="232" y="96" font-size="14" font-weight="700" fill="${INK}" text-anchor="middle">≤ 1 دقيقة</text>`,
+ swab:`${arm(78)}<ellipse cx="150" cy="96" rx="34" ry="12" fill="#CFE8F7" opacity=".9"/><g transform="rotate(-35 205 60)"><rect x="150" y="56" width="90" height="7" rx="3" fill="#E9D7B8"/><ellipse cx="148" cy="59.5" rx="14" ry="9" fill="#fff" stroke="${STK}"/></g>${[0,1,2].map(i=>`<path d="M${120+i*30} ${50-i*6} q6 -10 12 0 q-6 10 -12 0" fill="#7FC4E8"/>`).join("")}<path d="M60 40 q10 -6 20 0 M58 52 q12 -6 24 0" stroke="${STK}" stroke-width="2.5" fill="none" stroke-linecap="round"/><text x="262" y="56" font-size="14" font-weight="700" fill="${INK}" text-anchor="middle">اتركه يجف</text>`,
+ syringe:`<rect x="20" y="82" width="10" height="38" rx="3" fill="#9AA5B1"/><line x1="30" y1="101" x2="74" y2="101" stroke="#9AA5B1" stroke-width="7"/><rect x="72" y="80" width="150" height="42" rx="7" fill="${GLS}" stroke="${STK}" stroke-width="2"/><rect x="76" y="84" width="76" height="34" rx="4" fill="${BL}"/>${[100,124,148,172,196].map(x=>`<line x1="${x}" y1="80" x2="${x}" y2="90" stroke="${STK}" stroke-width="2"/>`).join("")}<rect x="222" y="94" width="18" height="14" rx="2" fill="#2E9D58"/><line x1="240" y1="101" x2="300" y2="101" stroke="#8A97A3" stroke-width="3" stroke-linecap="round"/><path d="M150 150 H60" stroke="${OK}" stroke-width="4" stroke-linecap="round"/><path d="M72 140 L58 150 L72 160" fill="none" stroke="${OK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="210" y="156" font-size="14" font-weight="700" fill="${INK}" text-anchor="middle">ببطء وثبات</text>${badMark(290,46)}<path d="M240 44 l12 -6 M240 54 l14 0 M240 64 l12 6" stroke="${BAD}" stroke-width="2.5" stroke-linecap="round"/>`,
+ transfer:`${tubeV(200,70,70,"#E9B820",BL,.45)}<g transform="rotate(25 140 60)"><rect x="70" y="44" width="110" height="30" rx="6" fill="${GLS}" stroke="${STK}" stroke-width="2"/><rect x="74" y="48" width="70" height="22" rx="3" fill="${BL}"/><line x1="40" y1="59" x2="72" y2="59" stroke="#9AA5B1" stroke-width="6"/><rect x="30" y="44" width="10" height="30" rx="3" fill="#9AA5B1"/><line x1="180" y1="59" x2="214" y2="59" stroke="#8A97A3" stroke-width="3"/></g><path d="M200 120 q-6 14 0 24" stroke="#7a1418" stroke-width="3" fill="none" opacity=".4"/>${badMark(60,140)}<text x="96" y="145" font-size="13" font-weight="600" fill="${INK}">لا تضغط المكبس</text><text x="262" y="150" font-size="13" font-weight="700" fill="${OK}" text-anchor="middle">يمتلئ وحده</text>`,
+ invert:`<g transform="rotate(-20 160 92)">${tubeV(160,30,96,"#8E6BBF",BL,.75)}</g><path d="M96 70 A72 72 0 0 1 220 52" fill="none" stroke="${OK}" stroke-width="5" stroke-linecap="round"/><path d="M212 40 L222 54 L206 60" fill="none" stroke="${OK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M224 120 A72 72 0 0 1 100 138" fill="none" stroke="${OK}" stroke-width="5" stroke-linecap="round"/><path d="M108 150 L98 136 L114 130" fill="none" stroke="${OK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="236" y="76" width="70" height="34" rx="17" fill="${OK}"/><text x="271" y="99" font-size="16" font-weight="700" fill="#fff" text-anchor="middle" direction="ltr">5–8×</text>${badMark(40,40)}<text x="40" y="74" font-size="12" font-weight="600" fill="${BAD}" text-anchor="middle">لا ترج</text>`,
+ fill:`${tubeV(100,22,120,"#3B82C4",BL,.38)}${tubeV(170,22,120,"#3B82C4",BL,.62)}${tubeV(240,22,120,"#3B82C4",BL,.92)}${[100,170,240].map(x=>`<line x1="${x-16}" y1="${22+13+120*.38}" x2="${x+16}" y2="${22+13+120*.38}" stroke="${INK}" stroke-width="2" stroke-dasharray="4 3"/>`).join("")}${badMark(100,170)}${okMark(170,170)}${badMark(240,170)}<text x="40" y="${22+13+120*.38+5}" font-size="12" font-weight="600" fill="${INK}" text-anchor="middle">خط التعبئة</text>`,
+ order:`${[["#7EC8E3","1"],["#C8312F","2"],["#E9B820","3"],["#2E9D58","4"],["#8E6BBF","5"],["#9AA5B1","6"]].map(([c,n],i)=>{const x=46+i*46;return `${tubeV(x,34,86,c,BL,.55)}<circle cx="${x}" cy="160" r="12" fill="#0F5A8E"/><text x="${x}" y="165" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">${n}</text>`;}).join("")}`,
+ iv:`<rect x="34" y="18" width="54" height="72" rx="10" fill="#E4F1FA" stroke="${STK}" stroke-width="2"/><rect x="40" y="40" width="42" height="44" rx="6" fill="#BFE0F5"/><line x1="61" y1="8" x2="61" y2="18" stroke="${STK}" stroke-width="3"/><path d="M61 90 V110 C61 140 130 140 170 120" fill="none" stroke="${STK}" stroke-width="3"/>${arm(104).replace(/-10 /g,"120 ")}<rect x="160" y="112" width="26" height="14" rx="3" fill="#fff" stroke="${STK}"/><g transform="translate(254 46)"><path d="M0 -24 L24 18 H-24 Z" fill="#F2B233"/><rect x="-2" y="-8" width="4" height="14" rx="2" fill="${INK}"/><circle cy="11" r="2.5" fill="${INK}"/></g><text x="254" y="86" font-size="13" font-weight="700" fill="${INK}" text-anchor="middle">اتبع الإجراء</text>`,
+ transport:`<rect x="40" y="70" width="170" height="86" rx="12" fill="#2F7DC0"/><rect x="40" y="58" width="170" height="20" rx="8" fill="#1F5F9A"/><rect x="56" y="96" width="138" height="12" rx="3" fill="#E4F1FA"/>${[0,1,2,3,4].map(i=>tubeV(72+i*26,38,46,["#8E6BBF","#E9B820","#C8312F","#9AA5B1","#3B82C4"][i],BL,.5)).join("")}<g transform="translate(260 64)"><circle r="24" fill="#fff" stroke="${INK}" stroke-width="3"/><path d="M0 -13 V0 L9 6" stroke="${INK}" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(260 126)"><rect x="-6" y="-26" width="12" height="38" rx="6" fill="#fff" stroke="${INK}" stroke-width="2.5"/><circle cy="16" r="10" fill="${BAD}"/><rect x="-2.5" y="-12" width="5" height="26" fill="${BAD}"/></g>`
+};
+/* ============ guides (redesigned from the original infographics) ============ */
+const CATS=[
+  {id:"draw",name:"سحب العينات"},
+  {id:"hemo",name:"انحلال الدم ونقل العينات"},
+  {id:"equip",name:"أجهزة المختبر"},
+  {id:"patient",name:"تعليمات المراجعين"},
+  {id:"ref",name:"القيم المرجعية"},
+  {id:"forms",name:"النماذج"}
+];
+const GUIDES=[
+ {id:"phlebotomy",cat:"draw",icon:"syringe",tone:"",title:"خطوات سحب العينات الوريدية",sub:"7 خطوات مصوّرة من التحضير حتى النقل",kw:"سحب دم وريد رباط ابرة phlebotomy venipuncture",credit:"إعداد: فهد بن إبراهيم",
+  blocks:[
+   {t:"photosteps",items:[
+     ["media/draw-1.jpg","التحضير والتأكد","تحقق من هوية المريض، وجهّز الأدوات المعقمة والأنابيب المطلوبة."],
+     ["media/draw-2.jpg","الرباط الضاغط","اربط الرباط على العضد فوق موقع السحب بمسافة 7–10 سم تقريبًا."],
+     ["media/draw-3.jpg","اختيار الأنابيب","اختر الأنبوب المناسب للفحص المطلوب، مثل أنبوب Serum أو EDTA."],
+     ["media/draw-4.jpg","إدخال الإبرة وسحب الدم","عقّم الموقع واتركه يجف، ثم أدخل الإبرة بزاوية 20–30 درجة واسحب الدم برفق."],
+     ["media/draw-5.jpg","مزج العينات","بعد السحب اقلب الأنبوب بلطف عدة مرات ليختلط الدم بالمادة المضافة."],
+     ["media/draw-6.jpg","تجنّب الرج","لا ترج الأنبوب بقوة، فالرج يسبب انحلال الدم (Hemolysis) وتلف العينة.",1],
+     ["media/draw-7.jpg","الحفظ والنقل","اطبع الباركود والصقه على الأنبوب بشكل صحيح، ثم ضعه في الحقيبة المخصصة لنقله إلى المختبر."]
+   ]},
+   {t:"callout",text:"دليل توعوي، ويُرجى اتباع البروتوكولات المعتمدة في المنشأة الصحية."}
+  ]},
+ {id:"hemolysis",cat:"hemo",icon:"drop",tone:"w",title:"انحلال الدم: الأسباب والوقاية",sub:"دليل مصوّر: كل سبب وطريقة تجنبه",kw:"انحلال منحلة hemolysis hemolysed potassium بوتاسيوم رفض اسباب وقاية",credit:"المصدر: المختبر المرجعي للمراكز – إدارة المختبرات وبنوك الدم",
+  blocks:[
+   {t:"photosteps",tag:"",items:[
+     ["media/hm-def.jpg","ما هو انحلال الدم؟","تكسّر كريات الدم الحمراء وخروج محتواها (الهيموجلوبين والبوتاسيوم) إلى المصل أو البلازما أثناء سحب العينة أو التعامل معها."],
+     ["media/hm-eff.jpg","تأثيره على النتائج",["ارتفاع كاذب في البوتاسيوم (K+) وإنزيمي LDH وAST، وقراءة غير دقيقة للبيليروبين.","قد يرفض المختبر العينة، فيُعاد السحب ويتأخر التشخيص."]]
+   ]},
+   {t:"pairphoto",items:[
+     ["media/hm-1.jpg","مقاس الإبرة","إبرة (فراشة) بمقاس صغير جدًا، 25G أو أصغر.","اختر مقاس إبرة مناسبًا للوريد، 21–22G لمعظم البالغين."],
+     ["media/hm-2.jpg","تثبيت الإبرة في الوريد","دخول الإبرة بشكل جزئي أو غير مستقر في الوريد.","ثبّت الإبرة جيدًا داخل الوريد."],
+     ["media/hm-3.jpg","قوة السحب","سحب الدم بقوة وبسرعة.","اسحب بهدوء ودون ضغط زائد."],
+     ["media/hm-4.jpg","تفريغ الدم في الأنبوب","الضغط بقوة على المكبس عند تفريغ الدم في الأنبوب.","فرّغ الدم بهدوء ودون ضغط زائد."],
+     ["media/hm-5.jpg","مزج الأنبوب","رج الأنبوب بعنف.","اقلب الأنبوب بلطف 5–8 مرات دون رج."],
+     ["media/hm-6.jpg","الرباط الضاغط","ترك الرباط الضاغط لفترة طويلة.","فك الرباط خلال دقيقة واحدة."],
+     ["media/hm-7.jpg","فصل المصل","تأخير فصل المصل أو إرسال العينة إلى المختبر.","افصل المصل في أقرب وقت ممكن، وأرسل العينة مباشرة."]
+   ]},
+   {t:"no",title:"أسباب أخرى يجب تجنبها",items:["عدم ترك المطهر (الكحول) يجف قبل السحب.","استخدام وريد صغير أو هش أو متصلب، أو تكرار إدخال الإبرة.","السحب من قسطرة وريدية (IV line) دون اتباع الإجراء الصحيح.","تعبئة الأنبوب بأقل أو أكثر من الحجم المطلوب.","استخدام أنابيب منتهية الصلاحية أو تالفة.","عدم اتباع ترتيب سحب الأنابيب (Order of Draw).","نقل العينة بعنف أو تعريضها لاهتزاز شديد أو لحرارة غير مناسبة."]},
+   {t:"callout",text:"جودة العينة تبدأ من سحبها الصحيح."}
+  ]},
+ {id:"transport",cat:"hemo",icon:"box",tone:"",title:"ترتيب العينات في صندوق النقل",sub:"6 خطوات مصوّرة لنقل آمن يمنع الانحلال",kw:"نقل صندوق بوكس ثلج تبريد انحلال transport box cooler",credit:"المصدر: إدارة المختبرات وبنوك الدم – تجمع تبوك الصحي",
+  blocks:[
+   {t:"lead",text:"يسبب تكسّر كريات الدم الحمراء (Hemolysis) تغيّرًا في النتائج، وقد يؤدي إلى إعادة السحب وتأخير التشخيص والعلاج."},
+   {t:"photosteps",items:[
+     ["media/tb-1.jpg","الطريقة المثلى لوضع العينات",["ضع الأنابيب بشكل رأسي داخل حامل ثابت.","تأكد من إحكام غلق الأغطية جيدًا.","تجنب ملامسة الأنابيب لبعضها أو لجدران الصندوق.","امنع حركة الأنابيب أو ارتطامها أثناء النقل.","عند الحاجة للتبريد، ضع طبقة عازلة بين العينات والثلج."]],
+     ["media/tb-2.jpg","منع الاهتزاز والصدمات","انقل العينات بهدوء، وتجنب رج الصندوق أو تعريضه للاهتزاز والصدمات."],
+     ["media/tb-3.jpg","التبريد الصحيح","عند الحاجة إلى التبريد، ضع طبقة عازلة (قطن أو مادة ماصة) بين العينات وأكياس الثلج."],
+     ["media/tb-4.jpg","تجنب ملامسة الثلج مباشرة","لا تضع الأنابيب مباشرة مع الثلج أو المجمّد، وتجنب تجميد العينات.",1],
+     ["media/tb-5.jpg","درجة حرارة النقل المناسبة","ليست جميع عينات الدم تحتاج إلى التبريد، اتبع المتطلبات الخاصة بكل فحص."],
+     ["media/tb-6.jpg","إغلاق صندوق النقل جيدًا","أغلق الصندوق بإحكام للحفاظ على درجة الحرارة ومنع الانسكاب أو التلوث."]
+   ]},
+   {t:"courier",logo:"media/spl-logo.png",name:"شركة سبل (SPL)",text:"الجهة المسؤولة عن نقل العينات من المراكز الصحية إلى المختبر المرجعي. سلّم الصندوق لمندوب سبل بعد ترتيب العينات وإغلاقه جيدًا."},
+   {t:"okimg",img:"media/tb-rem.jpg",title:"تذكّر",items:["أنبوب عمودي داخل حامل ثابت.","إحكام الإغلاق.","طبقة عازلة مع الثلج.","نقل بهدوء ودون اهتزاز.","سلامة العينة = دقة النتائج."]}
+  ]},
+ {id:"acr",cat:"patient",icon:"cup",tone:"a",title:"أخذ عينة تحليل ACR",sub:"9 خطوات مصوّرة · الألبومين إلى الكرياتينين في البول",kw:"بول albumin creatinine ratio ACR كلى سكري ضغط عينتي سبل",credit:"إعداد: فهد بن إبراهيم",
+  blocks:[
+   {t:"lead",text:"يُستخدم تحليل <b>ACR</b> للكشف المبكر عن أمراض الكلى ومتابعتها لدى مرضى السكري وارتفاع ضغط الدم."},
+   {t:"photosteps",items:[
+     ["media/acr-1.jpg","اشرح الإجراء للمريض","وضّح له هدف التحليل وطريقة أخذ العينة."],
+     ["media/acr-2.jpg","نوع العينة","عينة بول عشوائية، ويُفضّل أول بول صباحي."],
+     ["media/acr-3.jpg","جهّز الأدوات",["كوب جمع بول معقّم.","ملصق بيانات (باركود).","طلب فحص ACR.","قفازات."]],
+     ["media/acr-4.jpg","وجّه المريض",["يغسل يديه جيدًا.","ينظّف المنطقة التناسلية بماء نظيف.","يبدأ التبول في المرحاض، ثم يجمع العينة من منتصف التدفق في الكوب المعقّم."]],
+     ["media/acr-5.jpg","كمية العينة","20–30 مل في الكوب المعقّم."],
+     ["media/acr-6.jpg","أغلق الكوب بإحكام","تأكد من الإغلاق جيدًا لمنع التسرب."],
+     ["media/acr-7.jpg","سجّل البيانات","الصق ملصق الباركود (الاسم ورقم الهوية) على الكوب بدقة."],
+     ["media/acr-8.jpg","أرفق الباركود الإضافي","ضعه مع العينة في الكيس المعقّم الخاص بالعينات، وأغلقه جيدًا."],
+     ["media/acr-9.jpg","سلّم العينة للشحن","تُسلّم لموظف شركة الشحن (سبل) لتوصيلها إلى المختبر المرجعي."]
+   ]},
+   {t:"warnimg",img:"media/acr-warn.jpg",title:"تنبيهات مهمة",items:["تجنب أخذ العينة بعد مجهود بدني شديد.","تجنب أخذ العينة أثناء الدورة الشهرية أو عند وجود دم في البول.","يُبلغ المريض الطبيب عن الأدوية التي قد تؤثر على النتيجة.","+أول بول صباحي يعطي نتيجة أدق.","+يشرب المريض كمية معتدلة من الماء قبل أخذ العينة."]}
+  ]},
+ {id:"fit",cat:"patient",icon:"stool",tone:"t",title:"فحص سلامة القولون والمستقيم",sub:"6 خطوات مصوّرة لأخذ عينة البراز وحفظها",kw:"براز قولون مستقيم FIT colon stool occult Hemosure",credit:"المصدر: نشرة كيت Hemosure Accu-Reader A100",
+  blocks:[
+   {t:"staff",text:"الرجاء شرح هذه الخطوات للمستفيد المراد عمل التحليل له."},
+   {t:"photosteps",items:[
+     ["media/fit-1.jpg","قبل البدء",["سجّل البيانات على الملصق الخارجي للأنبوب (الاسم ورقم الهوية).","فك الغطاء واسحب عود العينة إلى الخارج.","افتح الأنبوب بحذر حتى لا يُسكب السائل الموجود بداخله."],0,1],
+     ["media/fit-2.jpg","طريقة أخذ العينة",["أدخل رأس العود في 6 أماكن مختلفة من عينة البراز.","تأكد أن الجزء الحلزوني في طرف العود مغطى بالعينة بالكامل.","لا تثنِ العود أثناء أخذ العينة."],0,1],
+     ["media/fit-3.jpg","إغلاق الأنبوب وحفظ العينة",["أعد العود إلى الأنبوب، واضغط الغطاء حتى يُحكم الإغلاق.","رجّ الأنبوب برفق للأعلى والأسفل لمدة 10 ثوانٍ ليختلط البراز بالسائل.","ضع الأنبوب في الكيس البلاستيكي المرفق.","احفظ العينة في مكان بارد بعيدًا عن الحرارة والشمس حتى تسليمها للمختبر."],0,1],
+     ["media/fit-hand.jpg","تسليم العينة للمركز الصحي","يُسلّم المستفيد العينة إلى موظف المختبر في المركز الصحي في أقرب وقت ممكن بعد أخذها."],
+     ["media/fit-4.jpg","التحقق من البيانات","بعد استلام العينة من المستفيد، تأكد من معلومات المستفيد، ثم اطبع الباركود وألصقه على أنبوب التحليل الخاص."],
+     ["media/fit-5.jpg","حفظ العينة في المختبر",["تُحفظ العينة في ثلاجة مختبر المركز الصحي بدرجة حرارة 2–8°C.","تُرسل إلى المختبر المرجعي خلال مدة لا تتجاوز 4 أيام."]]
+   ]},
+   {t:"info",title:"درجات الحرارة والتخزين",items:["<b>العينة بعد أخذها:</b> تُحفظ في ثلاجة مختبر المركز الصحي بدرجة حرارة 2–8°C، وتُرسل إلى المختبر المرجعي خلال 4 أيام كحد أقصى.","<b>الأنابيب غير المستخدمة:</b> تُحفظ في 4–30°C بعيدًا عن الضوء المباشر، وصلاحيتها 24 شهرًا. تحقق من تاريخ الانتهاء على العلبة قبل صرفها."]},
+   {t:"warnimg",img:"media/fit-warn.jpg",title:"تحذيرات",items:["لا تثنِ العود، ولا تسكب السائل الموجود في الأنبوب.","لا تفتح الأنبوب مرة أخرى بعد إغلاقه.","للسيدات: لا تؤخذ العينة خلال فترة الحيض.","احفظ العينة بعيدًا عن متناول الأطفال."]}
+  ]},
+ {id:"centrifuge",cat:"equip",icon:"spin",tone:"",title:"دليل استخدام جهاز الطرد المركزي",sub:"التحضير والموازنة والتشغيل والإيقاف والسلامة",kw:"طرد مركزي سنترفيوج centrifuge فصل مصل بلازما موازنة rpm دوار",credit:"إعداد وتنسيق: فهد بن إبراهيم",
+  blocks:[
+   {t:"lead",text:"يشرح هذا الدليل خطوة بخطوة كيف يُشغَّل جهاز الطرد المركزي (السنترفيوج) بأمان لفصل عينات الدم في المراكز الصحية، من استلام العينة حتى تنظيف الجهاز."},
+   {t:"info",title:"نظرة سريعة",items:["<b>نطاق الاستخدام:</b> عينات المصل والبلازما.","<b>سرعة الدوران:</b> 3500–5000 RPM.","<b>زمن الفصل:</b> 5 دقائق كحد أقصى."]},
+   {t:"info",title:"الهدف والفئة المستهدفة",items:["<b>الفئة المستهدفة:</b> فنيو وأخصائيو المختبر والتمريض، وكل من يتعامل مع العينات في المركز الصحي.","<b>الهدف:</b> الحصول على مصل أو بلازما صالحة للتحليل، ومنع تكسّر الأنابيب وتلف الجهاز وإصابة العاملين.","<b>المرجع:</b> دليل الشركة المصنّعة للجهاز وسياسة المختبر المرجعي، وعند أي تعارض تُتّبع تعليمات المصنّع."]},
+   {t:"photosteps",tag:"",items:[
+     ["media/cf-dev.jpg","أجزاء الجهاز",["<b>الغطاء (الباب):</b> يغلق حجرة الدوران، ولا يعمل الجهاز إلا وهو مغلق ومقفل.","<b>الدوّار (Rotor):</b> القرص الذي يحمل الأنابيب ويدور بها.","<b>الجيوب (الحواضن):</b> فتحات مرقّمة توضع فيها الأنابيب.","<b>لوحة التحكم:</b> ضبط السرعة (RPM) والوقت، وزر التشغيل (START) والإيقاف (STOP).","<b>الشاشة:</b> تعرض السرعة والوقت المتبقي ورسائل الخطأ.","<b>مفتاح الطاقة:</b> تشغيل الجهاز وإطفاؤه."]]
+   ]},
+   {t:"steps",title:"العينات والأنابيب التي تُفصل",items:[
+     ["جيل فاصل (SST) · غطاء أصفر / ذهبي",["الناتج: مصل (Serum).","القسم: الكيمياء الحيوية، والهرمونات، والفيروسات.","قبل الفصل: يُترك حتى يكتمل التجلط."]],
+     ["بدون مانع تجلط · غطاء أحمر",["الناتج: مصل (Serum).","القسم: حسب الدليل.","قبل الفصل: يُترك حتى يكتمل التجلط."]],
+     ["هيبارين · غطاء أخضر",["الناتج: بلازما.","القسم: حسب الدليل.","قبل الفصل: يُقلب بلطف ويُفصل مباشرة."]],
+     ["سيترات · غطاء أزرق فاتح",["الناتج: بلازما.","القسم: التخثر.","قبل الفصل: يُملأ حتى الخط المحدد تمامًا."]]
+   ]},
+   {t:"warn",title:"تنبيه",items:["أنبوب EDTA (البنفسجي) لفحص صورة الدم الكاملة لا يُفصل.","لا تُفصل إلا العينات المطلوب فصلها حسب دليل الفحوصات."]},
+   {t:"steps",title:"التحضير قبل التشغيل",items:[
+     ["الوقاية الشخصية","ارتدِ القفازين والمريول قبل لمس العينات أو الجهاز."],
+     ["مكان الجهاز","تأكد أن الجهاز على سطح مستوٍ وثابت، بعيد عن حافة الطاولة، وحوله مسافة تهوية كافية."],
+     ["حجرة الدوران","افحصها: نظيفة وجافة وخالية من بقايا الزجاج أو السوائل."],
+     ["بيانات العينة","تحقق من بيانات الملصق على كل أنبوب ومطابقتها لطلب الفحص."],
+     ["سلامة الأنابيب","افحص الأنابيب: لا شقوق، والغطاء محكم الإغلاق."],
+     ["اكتمال التجلط","أنابيب المصل (الأصفر والأحمر): اتركها قائمة 15–30 دقيقة حتى يكتمل التجلط قبل الفصل."]
+   ]},
+   {t:"photosteps",tag:"",items:[
+     ["media/cf-bal.jpg","موازنة الجهاز: أهم خطوة","كل أنبوب يجب أن يقابله أنبوب <b>بنفس الحجم والنوع ومستوى التعبئة</b> في الجيب المقابل له تمامًا عبر المركز. الجهاز غير المتوازن يهتز بقوة، وقد يكسر الأنابيب أو يتلف الدوّار."],
+     ["media/cf-bal1.jpg","توزيع الأنابيب",["ضع الأنبوب الأول في أي جيب، ثم ضع الثاني في الجيب المقابل له مباشرة (مثلًا 1 مقابل 7 في دوّار من 12 جيبًا).","مع 3 أنابيب يمكن توزيعها على شكل مثلث متساوي الأضلاع (مثلًا الجيوب 1 و5 و9)."]],
+     ["media/cf-bal2.jpg","أنبوب الموازنة",["إذا كان عدد العينات فرديًا (عينة واحدة مثلًا): أضف أنبوب موازنة مملوءًا بالماء، بنفس الحجم والنوع، في الجيب المقابل.","راجع التوزيع بالنظر قبل إغلاق الغطاء."]]
+   ]},
+   {t:"steps",title:"خطوات التشغيل",items:[
+     ["تشغيل الجهاز","شغّل الجهاز من مفتاح الطاقة وانتظر ظهور الشاشة."],
+     ["وضع الأنابيب","افتح الغطاء وضع الأنابيب في الجيوب بشكل متوازن، والأغطية للأعلى."],
+     ["إغلاق الغطاء","أغلق الغطاء بإحكام حتى تسمع صوت القفل."],
+     ["ضبط السرعة","اضبط السرعة على القيمة المعتمدة لجهازك ضمن 3500–5000 RPM."],
+     ["ضبط الوقت","اضبط الوقت على <b>5 دقائق كحد أقصى</b>."],
+     ["بدء الدوران","اضغط زر التشغيل <b>START</b>."],
+     ["المراقبة","ابقَ قرب الجهاز في أول دقيقة: إذا سمعت صوتًا غير طبيعي أو شعرت باهتزاز قوي اضغط <b>STOP</b> فورًا."],
+     ["أثناء الدوران","لا تفتح الغطاء ولا تحرك الجهاز أثناء الدوران."]
+   ]},
+   {t:"info",title:"سرعة الدوران ومدة الفصل",items:["<b>سرعة الدوران:</b> 3500–5000 RPM حسب موديل الجهاز والدوّار والأنبوب.","<b>مدة الفصل:</b> 5 دقائق كحد أقصى.","<b>مدة التجلط قبل الفصل (أنابيب المصل):</b> 15–30 دقيقة."]},
+   {t:"callout",text:"تُثبَّت القيمة المعتمدة لكل جهاز على ملصق بجانبه، ولا تُغيَّر إلا بقرار من إدارة المختبرات."},
+   {t:"steps",title:"الإيقاف وإخراج العينات",items:[
+     ["انتظار التوقف","انتظر انتهاء البرنامج وتوقّف الدوّار تمامًا قبل فتح الغطاء."],
+     ["إخراج الأنابيب","افتح الغطاء وأخرج الأنابيب بحذر وهي في وضع رأسي، دون رج."],
+     ["جودة الفصل","تأكد من جودة الفصل: طبقة مصل أو بلازما صافية فوق الجل أو الخلايا، دون تحلل دموي (لون أحمر) أو تجلط ظاهر."],
+     ["التجهيز للنقل","ضع العينات في الحامل وجهّزها حسب اشتراطات النقل والحفظ."],
+     ["إطفاء الجهاز","أطفئ الجهاز ونظّفه وفق التعليمات، واترك الغطاء مفتوحًا قليلًا ليجف."]
+   ]},
+   {t:"no",title:"تعليمات السلامة",items:["يُمنع تشغيل الجهاز دون موازنة، أو بأنابيب مكسورة أو مشروخة أو غير محكمة الإغلاق.","يُمنع تجاوز السرعة أو الزمن المعتمدين.","يُمنع فتح الغطاء أثناء الدوران أو محاولة إيقاف الدوّار باليد.","تُفصل العينات خلال ساعتين من السحب، ووفق دليل كل فحص.","ارتدِ القفازين دائمًا، واعتبر كل عينة معدية."]},
+   {t:"warn",title:"عند كسر أنبوب أو انسكاب داخل الجهاز",items:["أوقف الجهاز واتركه مغلقًا <b>30 دقيقة</b> لتهدأ الرذاذات.","ارتدِ القفازين، والتقط الزجاج بملقط (لا باليد) وضعه في حاوية الأدوات الحادة.","نظّف الحجرة والجيوب بمطهر معتمد وفق تعليمات الشركة.","أبلغ مسؤول المختبر وسجّل الحادثة، وأعد سحب العينة إذا لزم."]},
+   {t:"info",title:"التنظيف والصيانة",items:["<b>يوميًا:</b> مسح الحجرة والغطاء من الداخل والخارج بمطهر معتمد، والتأكد من جفافها.","<b>أسبوعيًا:</b> إخراج الجيوب (إن أمكن) وتنظيفها، وفحص الدوّار من الشقوق أو التآكل.","<b>حسب جدول الصيانة:</b> صيانة وقائية ومعايرة السرعة والوقت من الهندسة الطبية، مع حفظ السجل."]},
+   {t:"callout",text:"لا تستخدم مواد كاشطة أو مبيّضات قوية على الدوّار ما لم يسمح بها دليل المصنّع."},
+   {t:"steps",title:"الأعطال الشائعة وحلولها",items:[
+     ["اهتزاز أو صوت عالٍ",["السبب المحتمل: عدم موازنة الأنابيب.","الإجراء: أوقف الجهاز، وأعد توزيع الأنابيب أو أضف أنبوب موازنة."]],
+     ["الجهاز لا يبدأ",["السبب المحتمل: الغطاء غير مقفل، أو الوقت/السرعة غير مضبوطة.","الإجراء: أغلق الغطاء بإحكام وتحقق من الإعدادات."]],
+     ["رسالة خطأ على الشاشة",["السبب المحتمل: خلل في الغطاء أو عدم اتزان أو عطل فني.","الإجراء: سجّل رمز الخطأ، وراجع دليل المصنّع، وأبلغ الهندسة الطبية."]],
+     ["فصل غير كامل",["السبب المحتمل: عدم اكتمال التجلط أو إعدادات أقل من المعتمد.","الإجراء: تأكد من زمن التجلط والإعدادات المعتمدة، وأبلغ المسؤول."]],
+     ["مصل أحمر اللون (تحلل)",["السبب المحتمل: رج العينة أو صعوبة السحب.","الإجراء: لا تُرسل العينة، وأعد السحب."]]
+   ]}
+  ]},
+ {id:"forms",cat:"forms",icon:"doc",tone:"",title:"نماذج المختبر",sub:"طلب التحاليل · تسليم باركود FIT · إلغاء الباركود · التحويل للمناظير",kw:"الغاء باركود ملصقات cancellation barcode نموذج نماذج طلب تحاليل system down توقف النظام HR50 FIT باركود تحويل مناظير قولون referral form pdf",credit:"إعداد وتنسيق: فهد بن إبراهيم",
+  blocks:[
+   {t:"lead",text:"نماذج جاهزة للطباعة بصيغة PDF. افتح النموذج للاطلاع عليه أو حمّله واطبعه عند الحاجة."},
+   {t:"docs",items:[
+     {tag:"عند توقف النظام",title:"نموذج طلب التحاليل المخبرية",en:"Laboratory Request Form (HR50)",use:"يُستخدم لطلب التحاليل عند توقف النظام (System Down)، ثم تُعاد البيانات إلى الملف الصحي الإلكتروني بعد عودة النظام.",notes:["يُرفق مع كل عينة نموذج مستقل خاص بها.","سجّل اسم المركز واسم المستفيد وجميع البيانات بشكل صحيح، لضمان عدم فقدان العينة أو النتيجة."],img:"media/forms/lab-request-form.jpg",pdf:"media/forms/lab-request-form.pdf",file:"نموذج طلب التحاليل المخبرية.pdf"},
+     {tag:"عند استلام وتسليم العينات",title:"نموذج تسليم باركود عينات FIT",en:"FIT Test Barcode Submission Form",use:"النموذج الأساسي لفحص الكشف المبكر عن سرطان القولون: تُلصق فيه باركودات العينات عند استلامها وتسليمها للمختبر المرجعي.",img:"media/forms/fit-barcode-form.jpg",pdf:"media/forms/fit-barcode-form.pdf",file:"نموذج تسليم باركود FIT.pdf"},
+     {tag:"عند إلغاء باركود لم تُسحب عينته",title:"نموذج طلب إلغاء ملصقات الباركود",en:"Request for Cancellation of Printed Barcode Labels (Samples Not Collected)",use:"يُرسل من المركز الصحي إلى المختبر المرجعي لإلغاء ملصقات باركود طُبعت ولم تُسحب عيناتها، حتى 9 ملصقات في النموذج الواحد.",notes:["ألصق كل باركود في خانته، واكتب رمز السبب تحته.","<b>رموز السبب:</b> 1 رفض المريض السحب · 2 مغادرة المريض قبل السحب · 3 تعذّر سحب العينة · 4 طباعة مكررة أو خاطئة · 5 إلغاء الطلب من الطبيب · 6 أخرى.","يوقّع مسؤول المختبر ومدير المركز قبل إرساله."],img:"media/forms/barcode-cancellation-form.jpg",pdf:"media/forms/barcode-cancellation-form.pdf",file:"نموذج طلب إلغاء ملصقات الباركود.pdf"},
+     {tag:"عند النتيجة الإيجابية",title:"نموذج التحويل إلى قسم المناظير",en:"Referral Form for Endoscopy Department",use:"يُستخدم لتحويل المستفيد إلى قسم المناظير في مستشفى الملك فهد التخصصي عند ظهور نتيجة FIT إيجابية، للبالغين من 45 إلى 75 سنة.",img:"media/forms/endoscopy-referral-form.jpg",pdf:"media/forms/endoscopy-referral-form.pdf",file:"نموذج التحويل للمناظير.pdf"}
+   ]}
+  ]},
+ {id:"supplylist",cat:"forms",icon:"box",tone:"",title:"أكواد المستلزمات الطبية",sub:"انابيب سحب الدم والمستلزمات · بحث بالاسم أو الكود",kw:"تموين بنود مستلزمات انابيب انبوب اكواد كود nupco moh طلب مستودع edta sst هيبارين سترات",blocks:[]},
+ {id:"normal",cat:"ref",icon:"chart",tone:"",title:"المعدلات الطبيعية للتحاليل",sub:"السكر التراكمي والدهون بوحدتي القياس",kw:"قيم مرجعية طبيعي HbA1c سكر تراكمي كوليسترول دهون LDL HDL TG",
+  blocks:[
+   {t:"refa1c",icon:"media/nv-a1c.png"},
+   {t:"reflip",items:[["media/nv-chol.png","chol"],["media/nv-ldl.png","ldl"],["media/nv-hdl.png","hdl"],["media/nv-tg.png","trig"]]},
+   {t:"callout",text:"هذه قيم إرشادية، ويُرجع للطبيب في تفسير النتائج."},
+   {t:"link",text:"تحويل قيم الدهون بين الوحدتين",to:"convert"}
+  ]}
+];
+
+/* ============ lipids (reference values from the guide; factor = mg/dL per mmol/L) ============ */
+const LIPIDS=[
+  {id:"chol",short:"CHOL",name:"الكوليسترول الكلي",en:"Total Cholesterol",lo:1.9,hi:6.2,f:38.67},
+  {id:"trig",short:"TRIGL",name:"الدهون الثلاثية",en:"Triglycerides",lo:0.17,hi:2.26,f:88.57},
+  {id:"ldl",short:"LDL",name:"الدهون الضارة",en:"LDL Cholesterol",lo:0.0,hi:3.3,f:38.67},
+  {id:"hdl",short:"HDL",name:"الدهون النافعة",en:"HDL Cholesterol",lo:1.0,hi:1.6,f:38.67}
+];
+
+/* ============ Afinion 2 ============ */
+const TESTS=[
+  {id:"hba1c",name:"HbA1c",ar:"السكر التراكمي",time:"3 دقائق و30 ثانية",op:"18–30°C",room:"90 يومًا في 15–25°C",cap:"خلال 2–3 دقائق",
+   ctrlTemp:"اتركه يصل لحرارة الغرفة (15–25°C) لمدة 45 دقيقة قبل الاستخدام",ctrlPrep:"رجّه لمدة 30 ثانية قبل أخذ العينة",ctrlOpen:"60 يومًا في الثلاجة (2–8°C)",
+   cart:{gen:"4111621300400",trade:"4111621300401",desc:"HbA1c POCT Afinion 2"},ctrl:"4111621401200"},
+  {id:"lipid",name:"Lipid Panel",ar:"الدهون",time:"7–8 دقائق",op:"18–30°C",room:"14 يومًا في 15–25°C",cap:"خلال دقيقة واحدة",
+   ctrlTemp:"يُستخدم مباشرة من الثلاجة",ctrlPrep:"اقلب العبوة 8–10 مرات قبل أخذ العينة",ctrlOpen:"8 أسابيع في الثلاجة (2–8°C)",
+   cart:{gen:"4114000039700",trade:"4114000039702",desc:"Lipid Panel POCT Afinion"},ctrl:"4111612812800"}
+];
+const R="أعد الفحص بعينة جديدة وكيت جديد.";
+const RR="إذا تكرر: أعد تشغيل الجهاز وشغّل الكنترول.";
+const ERRS=[
+ {g:"حدود الفحص (100)",items:[
+  ["101","الهيماتوكريت منخفض جدًا","راجع نشرة فحص الدهون."],
+  ["102","الهيماتوكريت مرتفع جدًا","راجع نشرة فحص الدهون."],
+  ["103","الهيموجلوبين منخفض جدًا","راجع نشرة فحص HbA1c."],
+  ["104","الهيموجلوبين مرتفع جدًا","راجع نشرة فحص HbA1c."],
+  ["105","قيمة HbA1c منخفضة جدًا","راجع نشرة فحص HbA1c."],
+  ["106","قيمة HbA1c مرتفعة جدًا","راجع نشرة فحص HbA1c."]
+  ]},
+ {g:"العينة أو الكيت (200)",items:[
+  ["201","كمية العينة غير كافية: الأنبوب الشعري فارغ، أو فيه فقاعة هواء، أو لم يمتلئ كاملًا",R+" تأكد أن الأنبوب الشعري ممتلئ تمامًا دون فقاعات.",1],
+  ["202","عينة زائدة على السطح الخارجي لأداة الأخذ",R+" اجعل طرف الأنبوب الشعري فقط يلامس العينة.",1],
+  ["203","نوع العينة غير صحيح",R+" تأكد من نوع العينة المطلوب في نشرة الفحص.",1],
+  ["204",[["عينة متخثرة",R+" اجعل الوقت بين ملء الأنبوب الشعري وبدء التحليل أقصر ما يمكن."],["عينة منحلة أو جودة العينة ضعيفة","راجع نشرة الفحص. "+R],["عطل في الكيت أو الجهاز",R+" "+RR]],null,1],
+  ["205","الأنبوب الشعري مكسور أو تالف",R+" افحص أداة الأخذ قبل الاستخدام وتعامل معها بحذر.",1],
+  ["206","الباركود غير مقروء (متسخ أو تالف)",R+" "+RR,1],
+  ["207","لم تُدخل أداة الأخذ، أو أنها تخص فحصًا آخر، أو ملصقها غير مقروء",R+" تأكد من وضع أداة الأخذ الصحيحة وأن ملصقها نظيف.",1],
+  ["208","الكيت مستخدم من قبل",R,1],
+  ["209",[["الكيت منتهي الصلاحية","تحقق من التاريخ على الغلاف أو العلبة، وأعد الفحص بعينة جديدة وكيت من تشغيلة (Lot) أخرى."],["تاريخ الجهاز غير مضبوط","اضبط التاريخ في الجهاز، ثم "+R]]],
+  ["210","حرارة الكيت منخفضة",R+" تأكد أن حرارة التشغيل ضمن المدى المسموح للفحص.",1],
+  ["211","حرارة الكيت مرتفعة",R+" تأكد أن حرارة التشغيل ضمن المدى المسموح للفحص.",1],
+  ["212","يلزم تحديث برنامج الجهاز لإجراء هذا الفحص","تواصل مع المورّد."],
+  ["213 214","عطل في الكيت أو الجهاز",R+" "+RR,1],
+  ["215",[["عطل في الكيت أو الجهاز",R+" "+RR],["عينة منحلة أو ضعيفة الجودة (HbA1c)","راجع نشرة فحص HbA1c، ثم "+R]],null,1],
+  ["217","عينة منحلة أو ضعيفة الجودة (HbA1c)","راجع نشرة فحص HbA1c، ثم "+R,1],
+  ["218","تكثّف رطوبة على الكيت","استخدم كيتًا جديدًا، واتركه يصل لحرارة الغرفة قبل فتح الغلاف."]]},
+ {g:"أعطال الجهاز (300)",items:[
+  ["27 28 29","فشل إجراء بدء التشغيل","أعد تشغيل الجهاز. إذا تكرر تواصل مع مورّد Afinion 2."],
+  ["خطأ ذاتي","خطأ في الفحص الذاتي، والجهاز في وضع عدم التشغيل","أعد تشغيل الجهاز. إذا تكرر تواصل مع مورّد Afinion 2."],
+  ["301","فشل الفحص الذاتي","أعد تشغيل الجهاز."],
+  ["302","عطل في الجهاز","أعد تشغيل الجهاز وشغّل الكنترول، ثم "+R],
+  ["303","حرارة الجهاز مرتفعة","تأكد أن حرارة المكان ضمن 15–32°C، وانتظر حتى يبرد الجهاز، ثم "+R],
+  ["304","حرارة الجهاز منخفضة","تأكد أن الحرارة ضمن مدى الفحص المستخدم (راجع النشرة). تظهر حرارة الجهاز في قائمة Start-Up. ثم "+R],
+  ["305","الطابعة غير موصولة جيدًا أو بها عطل","أطفئ الجهاز، وأعد توصيل الطابعة، ثم شغّله. إذا استمرت الرسالة راجع دليل الطابعة."],
+  ["الشاشة","شاشة اللمس لا تستجيب أو الأزرار غير دقيقة","أعد تشغيل الجهاز وأعد معايرة الشاشة."]]},
+ {g:"المستخدمون (400)",items:[
+  ["401","لا يوجد مشرف مسجّل في قائمة المستخدمين","يجب وجود مشرف واحد على الأقل عند تفعيل التحقق من هوية المستخدم."],
+  ["402","لا يمكن حذف آخر مشرف","يجب وجود مشرف واحد على الأقل عند تفعيل التحقق من هوية المستخدم."],
+  ["403","هذا الفحص غير متاح للمستخدم الحالي","تواصل مع المشرف."],
+  ["404","رقم المستخدم غير موجود في القائمة","عند تفعيل التحقق يجب أن يكون الرقم مسجلًا. تواصل مع المشرف."]]},
+ {g:"الكنترول والذاكرة (500 – 600)",items:[
+  ["501","تشغيلة الكنترول منتهية الصلاحية","تحقق من التاريخ على النشرة أو العلبة، وأعد الفحص بكنترول من تشغيلة جديدة."],
+  ["502","بيانات الكنترول غير معروفة وغير محفوظة في الجهاز","أعد إدخال بيانات Afinion Control."],
+  ["503","تم إلغاء التحقق من الكنترول","لم تُعرف بيانات الكنترول وألغى المستخدم الفحص، ولم تُحفظ النتيجة. شغّل كنترول جديدًا لإعادة ضبط فترة القفل."],
+  ["504","انتهت المدة المحددة للكنترول، وتم إيقاف فحص المرضى لهذا التحليل","شغّل كنترول ناجحًا ليُفتح الفحص للمرضى من جديد."],
+  ["601","قائمة المستخدمين أو تشغيلات الكنترول ممتلئة","تتسع لـ 1000 مستخدم و100 تشغيلة كنترول. احذف مستخدمًا أو تشغيلة لإضافة جديد."]]}
+];
+
+/* ============ state ============ */
+const st={sq:"",scat:"all",scol:"",tab:"guides",guide:null,q:"",test:"hba1c",afSec:"tests",errQ:"",dir:"mm2mg",vals:{chol:"",trig:"",ldl:"",hdl:""}};
+const $=s=>document.querySelector(s);
+const norm=s=>String(s).toLowerCase().replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/[ً-ْ]/g,"");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,2000);}
+
+const TABS=[{id:"guides",name:"الأدلة",ic:"book"},{id:"afinion",name:"Afinion 2",ic:"device"},{id:"convert",name:"تحويل الدهون",ic:"swap"}];
+function nav(){
+  $("#tabs").innerHTML=TABS.map(t=>`<button class="tab" type="button" data-tab="${t.id}" ${st.tab===t.id?'aria-current="page"':''}><span class="p">${svg(t.ic)}</span>${t.name}</button>`).join("");
+  $("#tabs").querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{st.tab=b.dataset.tab;st.guide=null;draw(true);});
+}
+function header(){
+  const g=st.guide&&GUIDES.find(x=>x.id===st.guide);
+  const titles={guides:"دليل المختبرات وعينتي في المراكز الصحية",afinion:"جهاز Abbott Afinion 2",supply:"أكواد التموين الطبي",convert:"تحويل وحدات الدهون"};
+  $("#top").innerHTML=g
+    ? `<button class="back" type="button" id="back" aria-label="رجوع">${svg("back",22,2.2)}</button><div class="tt"><small>${CATS.find(c=>c.id===g.cat).name}</small><b>${g.title}</b></div><img class="minilogo" src="media/logo-white.png" alt="شعار تجمع تبوك الصحي">`
+    : `<div class="brandhead"><img class="wlogo" src="media/logo-white.png" alt="شعار تجمع تبوك الصحي"><small>تجمع تبوك الصحي</small><b>${titles[st.tab]}</b></div>`;
+  $("#top").classList.toggle("center",!g);
+  const b=$("#back"); if(b) b.onclick=()=>{st.guide=null;draw(true);};
+}
+function draw(top){
+  nav(); header();
+  const v=$("#view");
+  if(st.guide==="supplylist") v.innerHTML=supplyPage();
+  else if(st.guide) v.innerHTML=guidePage(GUIDES.find(x=>x.id===st.guide));
+  else if(st.tab==="guides") v.innerHTML=listPage();
+  else if(st.tab==="afinion") v.innerHTML=afinionPage();
+  else v.innerHTML=convertPage();
+  bind(); if(st.guide==="supplylist"){supBind();const q=$("#sq");if(q)q.oninput=()=>{st.sq=q.value;supRefresh(false);};} if(top) window.scrollTo(0,0);
+}
+
+/* ---------- guides list ---------- */
+function listPage(){
+  return `<div class="page">
+    <div><h1>الأدلة الإرشادية</h1></div>
+    <p class="sub">دليل مختصر لكل إجراء. اختر الدليل لعرضه.</p>
+    <div id="glist" style="display:flex;flex-direction:column;gap:16px">${listRows()}</div>
+    ${installCard()}
+    <p class="credit-by">تصميم وإنشاء: <b>فهد بن إبراهيم</b><small>مشرف عينتي والمختبر بإدارة المراكز الصحية</small></p>
+  </div>`;
+}
+function listRows(){
+  const q=norm(st.q.trim()); let out="";
+  for(const c of CATS){
+    const items=GUIDES.filter(g=>g.cat===c.id&&(!q||norm(g.title+" "+g.sub+" "+g.kw).includes(q)));
+    if(!items.length) continue;
+    out+=`<div class="group"><div class="glabel">${c.name}</div>${items.map(g=>`<button class="row" type="button" data-g="${g.id}"><span class="ic ${g.tone}">${svg(g.icon)}</span><span class="tx"><b>${g.title}</b><span>${g.sub}</span></span><span class="chev">${svg("chev",20)}</span></button>`).join("")}</div>`;
+  }
+  return out||`<div class="empty">لا توجد أدلة تطابق «${esc(st.q)}». جرّب كلمة أخرى.</div>`;
+}
+
+/* ---------- guide page ---------- */
+function blk(b){
+  const tick=(cls,ic,items)=>`<ul class="ticks ${cls}">${items.map(x=>`<li><span class="b">${svg(ic,15,2.4)}</span><span>${N(x)}</span></li>`).join("")}</ul>`;
+  switch(b.t){
+    case "lead": return `<section class="card"><p style="margin:0">${N(b.text)}</p></section>`;
+    case "steps": return `<section class="card"><h3>${b.title}</h3><ol class="steps">${b.items.map((s,i)=>`<li><span class="num">${i+1}</span><div><b>${N(s[0])}</b>${Array.isArray(s[1])?`<ul>${s[1].map(x=>`<li>${N(x)}</li>`).join("")}</ul>`:`<p>${N(s[1])}</p>`}</div></li>`).join("")}</ol></section>`;
+    case "ok": return `<section class="card ok"><h3>${svg("check",20,2.2)}${b.title}</h3>${tick("ok","check",b.items)}</section>`;
+    case "no": return `<section class="card"><h3 style="color:var(--warn)">${svg("x",20,2.2)}${b.title}</h3>${tick("no","x",b.items)}</section>`;
+    case "info": return `<section class="card"><h3 style="color:var(--brand)">${svg("info",20)}${b.title}</h3>${tick("info","check",b.items)}</section>`;
+    case "warn": return `<section class="card warn"><h3>${svg("alert",20)}${b.title}</h3>${tick("no","x",b.items)}</section>`;
+    case "pills": return `<section class="card"><h3>${b.title}</h3><div class="pills">${b.items.map(x=>`<span class="pill">↑ ${x}</span>`).join("")}</div><p style="margin:0;font-size:14px;color:var(--muted)">${b.note}</p></section>`;
+    case "pairs": return b.items.map((s,i)=>`<section class="pair2">
+      <div class="art"><span class="pnum">${i+1}</span><svg viewBox="0 0 320 240" role="img" aria-label="${s[1]}" font-family="Cairo, Segoe UI, Tahoma, sans-serif"><defs><radialGradient id="sh" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#0F2A40" stop-opacity=".14"/><stop offset="1" stop-color="#0F2A40" stop-opacity="0"/></radialGradient></defs><ellipse cx="160" cy="214" rx="130" ry="12" fill="url(#sh)"/><g transform="translate(0 28)">${ART[s[0]]}</g></svg></div>
+      <div class="ptx"><b>${s[1]}</b>
+        <div class="cz bad"><span class="b">${svg("x",14,2.6)}</span><div><span class="lab">السبب</span><p>${N(s[2])}</p></div></div>
+        <div class="cz ok"><span class="b">${svg("check",14,2.6)}</span><div><span class="lab">الوقاية</span><p>${N(s[3])}</p></div></div>
+      </div></section>`).join("");
+    case "refa1c": return `<section class="refc"><div class="rh"><img src="${b.icon}" alt=""><div><b>السكر التراكمي</b><span class="ltr">Hemoglobin A1c</span></div></div>
+      <div class="rrow"><span class="dot" style="background:#2E9D58"></span><span class="rl">طبيعي</span><span class="rv"><span class="ltr">&lt; 5.7%</span></span></div>
+      <div class="rrow"><span class="dot" style="background:#E0A21B"></span><span class="rl">مرحلة ما قبل السكري</span><span class="rv"><span class="ltr">5.7 – 6.4%</span></span></div>
+      <div class="rrow"><span class="dot" style="background:#D2412C"></span><span class="rl">سكري<small>يحتاج فحصًا تأكيديًا للتشخيص النهائي</small></span><span class="rv"><span class="ltr">≥ 6.5%</span></span></div></section>`;
+    case "reflip": return b.items.map(([ic,id])=>{const l=LIPIDS.find(x=>x.id===id);return `<section class="refc"><div class="rh"><img src="${ic}" alt=""><div><b>${l.name}</b><span class="ltr">${l.en}</span></div></div>
+      <div class="rvals"><div><span class="u">mmol/L</span><span class="big"><span class="ltr">${l.lo.toFixed((String(l.hi).split(".")[1]||"").length)} – ${l.hi}</span></span></div><div><span class="u">mg/dL</span><span class="big"><span class="ltr">${Math.round(l.lo*l.f)} – ${Math.round(l.hi*l.f)}</span></span></div></div></section>`;}).join("");
+    case "pairphoto": return b.items.map((s,i)=>`<section class="pstep">
+      <button class="pimg" type="button" data-img="${s[0]}" data-title="${s[1]}" aria-label="تكبير صورة: ${s[1]}"><img src="${s[0]}" alt="${s[1]}" loading="lazy"></button>
+      <div class="ptx"><div class="ptag">السبب ${i+1}</div><b>${s[1]}</b>
+        <div class="cz bad"><span class="b">${svg("x",14,2.6)}</span><div><span class="lab">السبب</span><p>${N(s[2])}</p></div></div>
+        <div class="cz ok"><span class="b">${svg("check",14,2.6)}</span><div><span class="lab">الوقاية</span><p>${N(s[3])}</p></div></div>
+      </div></section>`).join("");
+    case "photosteps": return b.items.map((s,i)=>`<section class="pstep${s[3]?' bad':''}">
+      <button class="pimg${s[4]?' free':''}" type="button" data-img="${s[0]}" data-title="${s[1]}" aria-label="تكبير صورة: ${s[1]}"><img src="${s[0]}" alt="${s[1]}" loading="lazy">${b.tag===""?"":`<span class="pnum">${i+1}</span>`}</button>
+      <div class="ptx">${b.tag===""?"":`<div class="ptag">الخطوة ${i+1}</div>`}<b>${s[1]}</b>${Array.isArray(s[2])?`<ul class="pl">${s[2].map(x=>`<li>${N(x)}</li>`).join("")}</ul>`:`<p>${N(s[2])}</p>`}</div></section>`).join("");
+    case "courier": return `<section class="courier"><div class="cl">${b.logo?`<img src="${b.logo}" alt="شعار ${b.name}">`:svg("box",30)}</div><div class="ct"><span>شريك النقل المعتمد</span><b>${b.name}</b><p>${b.text}</p></div></section>`;
+    case "okimg": return `<section class="card ok"><h3>${svg("check",20,2.2)}${b.title}</h3><button class="pimg free wimg" type="button" data-img="${b.img}" data-title="${b.title}" aria-label="تكبير صورة: ${b.title}"><img src="${b.img}" alt="" loading="lazy"></button><ul class="ticks ok">${b.items.map(x=>`<li><span class="b">${svg("check",15,2.4)}</span><span>${N(x)}</span></li>`).join("")}</ul></section>`;
+    case "warnimg": return `<section class="card warn"><h3>${svg("alert",20)}${b.title}</h3><button class="pimg free wimg" type="button" data-img="${b.img}" data-title="${b.title}" aria-label="تكبير صورة التحذيرات"><img src="${b.img}" alt="" loading="lazy"></button>${blk({t:"_x",items:b.items})}</section>`;
+    case "_x": return `<ul class="ticks">${b.items.map(x=>{const ok=x[0]==="+";return `<li class="${ok?'ok':'no'}"><span class="b">${svg(ok?"check":"x",15,2.4)}</span><span>${N(ok?x.slice(1):x)}</span></li>`;}).join("")}</ul>`;
+    case "staff": return `<div class="staffnote">${svg("info",22)}<span>${b.text}</span></div>`;
+    case "docs": return b.items.map(d=>`<section class="card doc"><a class="doc-th" href="${d.pdf}" target="_blank" rel="noopener"><img src="${d.img}" alt="معاينة ${d.title}" loading="lazy"></a><div class="doc-tx"><span class="doc-tag">${d.tag}</span><h3>${d.title}</h3><p class="doc-en">${d.en}</p><p>${N(d.use)}</p>${d.notes?`<div class="doc-notes"><b>${svg("info",17)}تعليمات الاستخدام</b><ul>${d.notes.map(x=>`<li>${N(x)}</li>`).join("")}</ul></div>`:""}<div class="doc-btns"><a class="doc-btn" href="${d.pdf}" target="_blank" rel="noopener">${svg("doc",18,2)}فتح النموذج</a><a class="doc-btn alt" href="${d.pdf}" download="${d.file}">${svg("down",18,2.2)}تحميل PDF</a></div></div></section>`).join("");
+    case "callout": return `<div class="callout">${svg("info",20)}<span>${b.text}</span></div>`;
+    case "link": return `<button class="row" type="button" data-to="${b.to}"><span class="ic t">${svg("swap")}</span><span class="tx"><b>${b.text}</b><span>تحويل الدهون</span></span><span class="chev">${svg("chev",20)}</span></button>`;
+    case "a1c": return `<section class="card"><h3>السكر التراكمي (HbA1c)</h3><table class="ref"><tbody>
+      <tr><td><span class="dot" style="background:#2E9D58"></span>طبيعي</td><td class="n">&lt; 5.7%</td></tr>
+      <tr><td><span class="dot" style="background:#E0A21B"></span>مرحلة ما قبل السكري</td><td class="n">5.7 – 6.4%</td></tr>
+      <tr><td><span class="dot" style="background:#D2412C"></span>سكري<small>يحتاج فحصًا تأكيديًا للتشخيص النهائي</small></td><td class="n">≥ 6.5%</td></tr></tbody></table></section>`;
+    case "lipids": return `<section class="card"><h3>الدهون</h3><div class="tw"><table class="ref"><thead><tr><th>التحليل</th><th>mmol/L</th><th>mg/dL</th></tr></thead><tbody>
+      ${LIPIDS.map(l=>`<tr><td>${l.name}<small>${l.en}</small></td><td class="n">${l.lo} – ${l.hi}</td><td class="n">${Math.round(l.lo*l.f)} – ${Math.round(l.hi*l.f)}</td></tr>`).join("")}</tbody></table></div>
+      <p style="margin:0;font-size:12.5px;color:var(--muted)">قيم mg/dL محسوبة من قيم mmol/L.</p></section>`;
+  }
+  return "";
+}
+function guidePage(g){
+  return `<div class="page">
+    <div class="hero"><span class="ic">${svg(g.icon,28)}</span><div><h1 style="font-size:21px">${g.title}</h1><p style="color:var(--muted)">${g.sub}</p></div></div>
+    ${g.blocks.map(blk).join("")}
+    ${g.imgs?`<section class="card"><h3>${svg("book",20)}التصميم الأصلي</h3><div class="orig">${g.imgs.map(s=>`<button type="button" data-img="${s}" data-title="${g.title}" aria-label="عرض التصميم الأصلي بالحجم الكامل"><img src="${s}" alt="" loading="lazy"><span class="zoom">عرض</span></button>`).join("")}</div></section>`:""}
+    ${g.credit?`<div class="credit">${g.credit}</div>`:""}
+  </div>`;
+}
+
+/* ---------- Afinion page ---------- */
+function codeRow(label,val){return `<div class="code"><div class="l"><span>${label}</span><b>${val}</b></div><button class="copy" type="button" data-copy="${val}">نسخ</button></div>`;}
+function afinionPage(){
+  const secs=[["tests","الكيت والكنترول"],["errors","رموز الأخطاء"],["codes","أكواد نوبكو"],["service","الدعم الفني"]];
+  return `<div class="page">
+    <div><h1>جهاز Abbott Afinion 2</h1></div>
+    <p class="sub">ملخص بالعربي لمواصفات الكيت والكنترول ورموز الأخطاء وأكواد الطلب.</p>
+    <div class="seg" role="group" aria-label="أقسام الجهاز">${secs.map(s=>`<button type="button" data-sec="${s[0]}" aria-pressed="${st.afSec===s[0]}">${s[1]}</button>`).join("")}</div>
+    <div id="afbody" style="display:flex;flex-direction:column;gap:16px">${afBody()}</div>
+  </div>`;
+}
+function afBody(){
+  if(st.afSec==="tests"){
+    const t=TESTS.find(x=>x.id===st.test);
+    return `
+    <div class="seg" role="group" aria-label="الفحص">${TESTS.map(x=>`<button type="button" data-test="${x.id}" aria-pressed="${st.test===x.id}">${x.name}</button>`).join("")}</div>
+    <section class="card"><h3>${svg("device",20)}كيت ${t.name} <span style="font-weight:500;color:var(--muted);font-size:14px">· ${t.ar}</span></h3>
+      <div class="kv">
+        <div><span>مدة التحليل</span><b>${N(t.time)}</b></div>
+        <div><span>حرارة التشغيل</span><b>${N(t.op)}</b></div>
+        <div><span>البقاء خارج الثلاجة</span><b>${N(t.room)}</b></div>
+        <div><span>بعد ملء الأنبوب الشعري ابدأ التحليل</span><b>${N(t.cap)}</b></div>
+      </div>
+    </section>
+    <section class="card"><h3>${svg("tube",20)}كنترول ${t.name}</h3>
+      <div class="kv">
+        <div class="wide"><span>قبل الاستخدام</span><b>${N(t.ctrlTemp)}</b></div>
+        <div class="wide"><span>التحضير</span><b>${N(t.ctrlPrep)}</b></div>
+      </div>
+    </section>
+    <section class="card"><h3>${svg("info",20)}ينطبق على كل الفحوصات</h3>
+      <ul class="ticks info">
+        <li><span class="b">${svg("check",15,2.4)}</span><span>العلبة: 15 كيت.</span></li>
+        <li><span class="b">${svg("check",15,2.4)}</span><span>الكيت والكنترول يُحفظان في الثلاجة <b dir="ltr">2–8°C</b> حتى تاريخ الانتهاء.</span></li>
+        <li><span class="b">${svg("check",15,2.4)}</span><span>اترك الكيت يصل لحرارة التشغيل <b>قبل</b> فتح الغلاف، وافتح الغلاف قبل الاستخدام مباشرة.</span></li>
+      </ul>
+    </section>
+    <div class="callout">${svg("alert",20)}<span>لا تُعِد استخدام كيت رفضه الجهاز. خذ عينة جديدة وأعد الفحص بكيت جديد.</span></div>`;
+  }
+  if(st.afSec==="errors"){
+    return `<label class="search" for="eq">${svg("search",20)}<span hidden>ابحث برقم الرمز</span><input id="eq" type="search" inputmode="numeric" placeholder="اكتب رقم الرمز الظاهر على الشاشة، مثل 201" autocomplete="off" value="${esc(st.errQ)}"></label>
+    <div id="errlist" style="display:flex;flex-direction:column;gap:16px">${errRows()}</div>`;
+  }
+  if(st.afSec==="codes"){
+    return TESTS.map(t=>`<section class="card"><h3>${t.name} <span style="font-weight:500;color:var(--muted);font-size:14px">· ${t.ar}</span></h3>
+      ${codeRow("كود الكيت (Generic)",t.cart.gen)}
+      ${codeRow("رقم الصنف التجاري (Trade)",t.cart.trade)}
+      ${t.cart.cust?codeRow("رقم صنف العميل",t.cart.cust):""}
+      ${t.cart.cat?codeRow("رقم الكتالوج",t.cart.cat):""}
+      ${codeRow("كود الكنترول (NUPCO Generic)",t.ctrl)}
+    </section>`).join("")+`<p style="margin:0;font-size:12.5px;color:var(--muted);text-align:center">المصدر: جداول أصناف نوبكو المرفقة.</p>`;
+  }
+  return `<section class="card"><h3>${svg("phone",20)}قبل التواصل مع المورّد</h3>
+    <p style="margin:0;font-size:14.5px">إذا استمرت المشكلة بعد الإجراءات التصحيحية، تواصل مع مورّد Afinion 2 للدعم الفني، وجهّز المعلومات التالية:</p>
+    <ul class="ticks info">${["الرقم التسلسلي للجهاز (SN): على الملصق خلف الجهاز.","رقم إصدار البرنامج: في قائمة Start-Up.","نوع فحص Afinion.","رقم تشغيلة الكيت (Lot): على الغلاف أو العلبة.","اسم الكنترول ورقم تشغيلته: على ملصق العبوة.","نتائج الكنترول التي ظهرت.","وصف المشكلة مع رقم الرمز أو الرسالة الظاهرة."].map(x=>`<li><span class="b">${svg("check",15,2.4)}</span><span>${x}</span></li>`).join("")}</ul>
+  </section>`;
+}
+function errRows(){
+  const q=st.errQ.trim(); let out="";
+  for(const grp of ERRS){
+    const items=grp.items.filter(e=>!q||e[0].split(" ").some(c=>c.startsWith(q))||norm(JSON.stringify(e)).includes(norm(q)));
+    if(!items.length) continue;
+    out+=`<section class="card"><h3>${grp.g}</h3><div>${items.map(e=>{
+      const long=!/^[0-9 ]+$/.test(e[0])||e[0].length>4;
+      const body=Array.isArray(e[1])
+        ? e[1].map(([c,a])=>`<p class="why">${N(c)}</p><p>${N(a)}</p>`).join("")
+        : `<b>${N(e[1])}</b><p>${N(e[2])}</p>`;
+      return `<div class="err"><span class="c ${long?'long':''}">${e[0].replace(/ /g,"<br>")}</span><div>${Array.isArray(e[1])?`<b>أكثر من سبب محتمل</b>`:""}${body}</div></div>`;}).join("")}</div></section>`;
+  }
+  return out||`<div class="empty">لا يوجد رمز بهذا الرقم. تأكد من الرقم الظاهر على شاشة الجهاز.</div>`;
+}
+
+/* ---------- converter ---------- */
+const fmt=(n,d)=>isFinite(n)?String(+n.toFixed(d)):"";
+const toNum=v=>parseFloat(String(v).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/[٫,]/g,"."));
+function units(){return st.dir==="mm2mg"?["mmol/L","mg/dL"]:["mg/dL","mmol/L"];}
+function convOne(l,raw){
+  const n=toNum(raw); if(String(raw).trim()===""||isNaN(n)) return {out:"",mm:null};
+  return st.dir==="mm2mg"?{out:fmt(n*l.f,0),mm:n}:{out:fmt(n/l.f,2),mm:n/l.f};
+}
+function statusHTML(l,mm){
+  const range=`<span class="ltr">${l.lo}–${l.hi} mmol/L</span> · <span class="ltr">${Math.round(l.lo*l.f)}–${Math.round(l.hi*l.f)} mg/dL</span>`;
+  if(mm==null) return `<div class="status none">المعدل الطبيعي: ${range}</div>`;
+  if(mm<l.lo) return `<div class="status lo">${svg("info",18)}أقل من المعدل الطبيعي</div>`;
+  if(mm>l.hi) return `<div class="status hi">${svg("alert",18)}أعلى من المعدل الطبيعي</div>`;
+  return `<div class="status in">${svg("check",18,2.4)}ضمن المعدل الطبيعي</div>`;
+}
+function lipCard(l){
+  const [from,to]=units(); const r=convOne(l,st.vals[l.id]);
+  return `<section class="card lipcard" data-l="${l.id}">
+    <h3>${l.name} <span class="ltr" style="font-weight:600;color:var(--brand);font-size:14px">${l.short}</span></h3>
+    <div class="pair">
+      <div class="fld"><label for="in-${l.id}">${from}</label><input id="in-${l.id}" data-in="${l.id}" inputmode="decimal" autocomplete="off" placeholder="أدخل القيمة" value="${esc(st.vals[l.id])}"></div>
+      <div class="eq" aria-hidden="true">←</div>
+      <div class="fld"><label>${to}</label><output class="res" id="out-${l.id}" aria-live="polite">${r.out||"—"}</output></div>
+    </div>
+    <div id="st-${l.id}">${statusHTML(l,r.mm)}</div>
+  </section>`;
+}
+function convertPage(){
+  return `<div class="page">
+    <div><h1>تحويل وحدات الدهون</h1></div>
+    <p class="sub">اختر اتجاه التحويل، ثم اكتب القيم.</p>
+    <div class="seg dirseg" role="group" aria-label="اتجاه التحويل">
+      <button type="button" data-dir="mm2mg" aria-pressed="${st.dir==="mm2mg"}">من mmol/L إلى mg/dL</button>
+      <button type="button" data-dir="mg2mm" aria-pressed="${st.dir==="mg2mm"}">من mg/dL إلى mmol/L</button>
+    </div>
+    ${LIPIDS.map(lipCard).join("")}
+    <button class="row" type="button" id="clearall" style="min-height:52px;justify-content:center;color:var(--brand);font-weight:600">مسح كل القيم</button>
+    <div class="callout">${svg("info",20)}<span>المعدلات الطبيعية إرشادية من دليل القيم المرجعية، ويُرجع للطبيب في تفسير النتائج. معامل التحويل: الكوليسترول وLDL وHDL × 38.67، والدهون الثلاثية × 88.57.</span></div>
+  </div>`;
+}
+
+const SUPPLY=[{"n":52,"ar":"انبوب K2 EDTA بنفسجي 3 مل","en":"TUBE, K2 EDTA, VACUUM BLOOD COLLECTION, LAVENDER CAP, 3 ML, SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUMBER OF NEEDLES","nup":"4110410705100","new":"787807831","old":"7850101180","cat":"draw","c":"purple","kw":"edta cbc صوره الدم بنفسجي لافندر"},{"n":63,"ar":"انبوب K3 EDTA بنفسجي 4 مل","en":"TUBE, K3 EDTA, VACUUM BLOOD COLLECTION, LAVENDER CAP, 4 ML","nup":"4110410701100","new":"787807859","old":"","cat":"draw","c":"purple","kw":"edta cbc صوره الدم بنفسجي لافندر"},{"n":62,"ar":"انبوب K2 EDTA بنفسجي 5 مل","en":"TUBE, K2 EDTA, VACUUM BLOOD COLLECTION, LAVENDER CAP, 5 ML","nup":"4114000017200","new":"787807858","old":"7850606170","cat":"draw","c":"purple","kw":"edta cbc صوره الدم بنفسجي لافندر"},{"n":53,"ar":"انبوب K2 EDTA بنفسجي 7 مل","en":"TUBE, K2 EDTA, VACUUM BLOOD COLLECTION, LAVENDER CAP, 7 ML, SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUMBER OF NEEDLES","nup":"4114000017600","new":"787807833","old":"7857701020","cat":"draw","c":"purple","kw":"edta cbc صوره الدم بنفسجي لافندر"},{"n":64,"ar":"انبوب K3 EDTA بنفسجي 7 مل","en":"TUBE, K3 EDTA, VACUUM BLOOD COLLECTION, LAVENDER CAP, 7 ML","nup":"4110410706700","new":"787807860","old":"","cat":"draw","c":"purple","kw":"edta cbc صوره الدم بنفسجي لافندر"},{"n":39,"ar":"انبوب K2 EDTA بنفسجي 2 مل (متوافق مع الأتمتة)","en":"TUBE, K2 EDTA, VACUUM BLOOD COLLECTION, LAVENDER CAP, 2 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4110410711500","new":"787807816","old":"","cat":"draw","c":"purple","kw":"edta cbc صوره الدم بنفسجي لافندر"},{"n":40,"ar":"انبوب K2 EDTA بنفسجي 3 مل (متوافق مع الأتمتة)","en":"TUBE, K2 EDTA, VACUUM BLOOD COLLECTION, LAVENDER CAP, 3 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4110410711100","new":"787807817","old":"","cat":"draw","c":"purple","kw":"edta cbc صوره الدم بنفسجي لافندر"},{"n":41,"ar":"انبوب K2 EDTA بنفسجي 4 مل (متوافق مع الأتمتة)","en":"TUBE, K2 EDTA, VACUUM BLOOD COLLECTION, LAVENDER CAP, 4 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4114000083200","new":"787807818","old":"","cat":"draw","c":"purple","kw":"edta cbc صوره الدم بنفسجي لافندر"},{"n":42,"ar":"انبوب K2 EDTA بنفسجي 5 مل (متوافق مع الأتمتة)","en":"TUBE, K2 EDTA, VACUUM BLOOD COLLECTION, LAVENDER CAP, 5 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4110410711000","new":"787807819","old":"","cat":"draw","c":"purple","kw":"edta cbc صوره الدم بنفسجي لافندر","tr":[["4110410711001","K2 EDTA HEMOGARD 454209 GREINER BIO ONE"],["4110410711002","BLOOD COLLECTION TUBE 510303 AB MEDICAL"],["4110410711003","TUBE LAB AUTOMATION 683050202 IMPROVE"]]},{"n":69,"ar":"انبوب K2 EDTA للأطفال وردي 0.5 مل","en":"TUBE, PEDIATRIC, K2 EDTA, BLOOD COLLECTION, PINK CAP, 0.5 ML","nup":"4110410702700","new":"787807866","old":"785020900","cat":"draw","c":"pink","kw":"edta وردي"},{"n":70,"ar":"انبوب K2 EDTA للأطفال وردي 0.5 مل (مع محول)","en":"TUBE, PEDIATRIC, K2 EDTA, BLOOD COLLECTION, PINK CAP, WITH ADAPTER, 0.5 ML","nup":"4229460600500","new":"787807867","old":"789020089","cat":"draw","c":"pink","kw":"edta وردي"},{"n":80,"ar":"انبوب سترات الصوديوم ESR وردي 1.6 مل","en":"TUBE, SODIUM CITRATE ESR, VACUUM BLOOD COLLECTION, BLACK CAP, 1.6 ML","nup":"4110410708200","new":"787807250","old":"","cat":"draw","c":"pink","kw":"edta وردي esr ترسيب"},{"n":18,"ar":"انبوب تحليل ESR (طقم مايكروسيستم)","en":"SET ESR MICROSYS BLOOD COLLECTION TUBE","nup":"4111612000000","new":"787805674","old":"7810200260","cat":"draw","c":"pink","kw":"وردي esr ترسيب سرعة الترسيب مايكروسيستم microsys طقم"},{"n":75,"ar":"انبوب فصل المصل (SST) بالجل للأطفال أصفر 0.5 مل","en":"TUBE, PEDIATRIC, SERUM SEPARATION WITH GEL, BLOOD COLLECTION, YELLOW CAP, 0.5 ML","nup":"4110410702600","new":"787807872","old":"785020904","cat":"draw","c":"yellow","kw":"مصل sst سيرم كيمياء اصفر جل"},{"n":74,"ar":"انبوب فصل المصل (SST) بالجل للأطفال أصفر 0.5 مل (انبوب كهرماني)","en":"TUBE, PEDIATRIC, SERUM SEPARATION WITH GEL, BLOOD COLLECTION, AMBER TUBE/YELLOW CAP, 0.5 ML","nup":"4110410702800","new":"787807871","old":"785020902","cat":"draw","c":"yellow","kw":"مصل sst سيرم كيمياء اصفر جل"},{"n":76,"ar":"انبوب فصل المصل (SST) بالجل للأطفال أصفر 0.5 مل (مع محول)","en":"TUBE, PEDIATRIC, SERUM SEPARATION WITH GEL, BLOOD COLLECTION, YELLOW CAP, WITH ADAPTER, 0.5 ML","nup":"4110410700500","new":"787807873","old":"","cat":"draw","c":"yellow","kw":"مصل sst سيرم كيمياء اصفر جل"},{"n":15,"ar":"انبوب فصل المصل (SST) بمنشط تخثر وجل أصفر 6 مل","en":"TUBE SERUM SEPARATION WITH CLOT ACTIVATOR AND GEL VACUUM BLOOD COLLECTION YELLOW CAP 6 ML SINGLE USE HOLDER TO BE SUPPLI","nup":"4110410702500","new":"787807841","old":"788770036","cat":"draw","c":"yellow","kw":"مصل sst سيرم كيمياء اصفر جل"},{"n":59,"ar":"انبوب ACD (سترات ديكستروز) أصفر 8–9 مل","en":"TUBE, ACID CITRATE DEXTROSE, VACUUM BLOOD COLLECTION, YELLOW CAP, 8-9 ML","nup":"4110410707200","new":"787807845","old":"","cat":"draw","c":"yellow","kw":"مصل sst سيرم كيمياء اصفر جل"},{"n":45,"ar":"انبوب فصل المصل (SST) بمنشط تخثر وجل أصفر 2.5 مل (متوافق مع الأتمتة)","en":"TUBE, SERUM SEPARATION WITH CLOT ACTIVATOR AND GEL, VACUUM BLOOD COLLECTION, YELLOW CAP, 2.5 ML, COMPATIBLE WITH TOTAL L","nup":"4110410710500","new":"787807822","old":"","cat":"draw","c":"yellow","kw":"مصل sst سيرم كيمياء اصفر جل"},{"n":46,"ar":"انبوب فصل المصل (SST) بمنشط تخثر وجل أصفر 3.5 مل (متوافق مع الأتمتة)","en":"TUBE, SERUM SEPARATION WITH CLOT ACTIVATOR AND GEL, VACUUM BLOOD COLLECTION, YELLOW CAP, 3.5 ML, COMPATIBLE WITH TOTAL L","nup":"4110410711300","new":"787807823","old":"","cat":"draw","c":"yellow","kw":"مصل sst سيرم كيمياء اصفر جل"},{"n":30,"ar":"انبوب فصل المصل (SST) بمنشط تخثر وجل أصفر 5 مل (متوافق مع الأتمتة)","en":"TUBE, SERUM SEPARATION WITH CLOT ACTIVATOR AND GEL, VACUUM BLOOD COLLECTION, YELLOW CAP, 5 ML, COMPATIBLE WITH TOTAL LAB","nup":"4110410711400","new":"787807824","old":"","cat":"draw","c":"yellow","kw":"مصل sst سيرم كيمياء اصفر جل"},{"n":47,"ar":"انبوب فصل المصل (SST) بمنشط تخثر وجل أصفر 7 مل (متوافق مع الأتمتة)","en":"TUBE, SERUM SEPARATION WITH CLOT ACTIVATOR AND GEL, VACUUM BLOOD COLLECTION, YELLOW CAP, 7 ML, COMPATIBLE WITH TOTAL LAB","nup":"4110410700300","new":"787807825","old":"","cat":"draw","c":"yellow","kw":"مصل sst سيرم كيمياء اصفر جل"},{"n":73,"ar":"انبوب عادي (Plain) بدون منشط تخثر للأطفال أحمر 0.5 مل","en":"TUBE, PEDIATRIC, PLAIN WITHOUT CLOT ACTIVATOR, BLOOD COLLECTION, RED CAP, 0.5 ML","nup":"4110410704300","new":"787807870","old":"","cat":"draw","c":"red","kw":"عادي مصل احمر سيرم"},{"n":56,"ar":"انبوب عادي (Plain) أحمر 2 مل","en":"TUBE, PLAIN, VACUUM BLOOD COLLECTION, RED CAP, 2 ML, SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUMBER OF NEEDLES REQUIRE","nup":"4110410701500","new":"787807838","old":"785010119","cat":"draw","c":"red","kw":"عادي مصل احمر سيرم"},{"n":77,"ar":"انبوب عادي (Plain) بمنشط تخثر أحمر 3 مل","en":"TUBE, PLAIN WITH CLOT ACTIVATOR, VACUUM BLOOD COLLECTION, RED CAP, 3 ML","nup":"4110410707100","new":"787807874","old":"","cat":"draw","c":"red","kw":"عادي مصل احمر سيرم"},{"n":79,"ar":"انبوب عادي (Plain) أحمر 4 مل","en":"TUBE, PLAIN, VACUUM BLOOD COLLECTION, RED CAP, 4 ML","nup":"4110410705600","new":"787807877","old":"","cat":"draw","c":"red","kw":"عادي مصل احمر سيرم"},{"n":13,"ar":"انبوب عادي (Plain) بدون منشط تخثر أحمر 6 مل","en":"TUBE PLAIN WITHOUT CLOT ACTIVATOR VACUUM BLOOD COLLECTION RED CAP 6 ML SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUMBER","nup":"4110410702200","new":"787807837","old":"785770100","cat":"draw","c":"red","kw":"عادي مصل احمر سيرم"},{"n":55,"ar":"انبوب عادي (Plain) بمنشط تخثر أحمر 6 مل","en":"TUBE, PLAIN WITH CLOT ACTIVATOR, VACUUM BLOOD COLLECTION, RED CAP, 6 ML, SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUMBE","nup":"4112170800300","new":"787807836","old":"","cat":"draw","c":"red","kw":"عادي مصل احمر سيرم"},{"n":78,"ar":"انبوب عادي (Plain) أحمر 10 مل","en":"TUBE, PLAIN, VACUUM BLOOD COLLECTION, RED CAP, 10 ML","nup":"4110410701200","new":"787807876","old":"","cat":"draw","c":"red","kw":"عادي مصل احمر سيرم"},{"n":57,"ar":"انبوب مصل سريع (RST) بالثرومبين برتقالي 4–5 مل","en":"TUBE RAPID SERUM TUBE VACUUM BLOOD COLLECTION SERUM SEPARATION GEL AND THROMBIN ORANGE CAP 4-5 ML SINGLE USE HOLDER TO B","nup":"4114000017300","new":"787807839","old":"7850606160","cat":"draw","c":"orange","kw":"ثرومبين مصل سريع برتقالي"},{"n":71,"ar":"انبوب ليثيوم هيبارين بالجل للأطفال أخضر فاتح 0.5 مل","en":"TUBE, PEDIATRIC, LITHIUM HEPARIN WITH GEL, BLOOD COLLECTION, LIGHT GREEN CAP, 0.5 ML","nup":"4110410704200","new":"787807868","old":"","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":72,"ar":"انبوب ليثيوم هيبارين بالجل للأطفال أخضر فاتح 0.5 مل (مع محول)","en":"TUBE, PEDIATRIC, LITHIUM HEPARIN WITH GEL, BLOOD COLLECTION, LIGHT GREEN CAP, WITH ADAPTER, 0.5 ML","nup":"4112170700000","new":"787807869","old":"","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":68,"ar":"انبوب ليثيوم هيبارين أخضر فاتح 3 مل","en":"TUBE, LITHIUM HEPARIN, VACUUM BLOOD COLLECTION, LIGHT GREEN CAP, 3 ML","nup":"4110410709600","new":"787807864","old":"","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":66,"ar":"انبوب ليثيوم هيبارين بالجل أخضر فاتح 3 مل","en":"TUBE, LITHIUM HEPARIN WITH GEL, VACUUM BLOOD COLLECTION, LIGHT GREEN CAP, 3 ML","nup":"4110410703300","new":"787807862","old":"","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":14,"ar":"انبوب ليثيوم هيبارين أخضر فاتح 4 مل","en":"TUBE LITHIUM HEPARIN VACUUM BLOOD COLLECTION LIGHT GREEN CAP 4 ML SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUMBER OF NE","nup":"4114000017500","new":"787807835","old":"7887700210","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":67,"ar":"انبوب ليثيوم هيبارين بالجل أخضر فاتح 5.5 مل (بفاصل ميكانيكي)","en":"TUBE, LITHIUM HEPARIN WITH GEL, VACUUM BLOOD COLLECTION, LIGHT GREEN CAP, 5.5 ML, COMPATIBLE WITH MECHANICAL SEPARATOR","nup":"4229460600400","new":"787807863","old":"789020097","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":54,"ar":"انبوب ليثيوم هيبارين بالجل أخضر فاتح 6 مل","en":"TUBE LITHIUM HEPARIN WITH GEL VACUUM BLOOD COLLECTION LIGHT GREEN CAP 6 ML SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUM","nup":"4114000017400","new":"787807834","old":"7887700380","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":65,"ar":"انبوب ليثيوم هيبارين بالجل أخضر فاتح 10 مل","en":"TUBE, LITHIUM HEPARIN WITH GEL, VACUUM BLOOD COLLECTION, LIGHT GREEN CAP, 10 ML","nup":"4110410706900","new":"787807861","old":"","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":43,"ar":"انبوب ليثيوم هيبارين بالجل أخضر فاتح 4 مل (متوافق مع الأتمتة)","en":"TUBE, LITHIUM HEPARIN WITH GEL, VACUUM BLOOD COLLECTION, LIGHT GREEN CAP, 4 ML, COMPATIBLE WITH AUTOMATION SYSTEM","nup":"4110410711800","new":"787807820","old":"","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":44,"ar":"انبوب ليثيوم هيبارين بالجل أخضر فاتح 6 مل (متوافق مع الأتمتة)","en":"TUBE, LITHIUM HEPARIN WITH GEL, VACUUM BLOOD COLLECTION, LIGHT GREEN CAP, 6 ML, COMPATIBLE WITH AUTOMATION SYSTEM","nup":"4110410710900","new":"787807821","old":"","cat":"draw","c":"lgreen","kw":"هيبارين ليثيوم بلازما اخضر فاتح"},{"n":81,"ar":"انبوب صوديوم هيبارين أخضر 3 مل","en":"TUBE, SODIUM HEPARIN, VACUUM BLOOD COLLECTION, GREEN CAP, 3 ML","nup":"4110410709700","new":"787807251","old":"","cat":"draw","c":"green","kw":"هيبارين صوديوم اخضر"},{"n":82,"ar":"انبوب صوديوم هيبارين أخضر 4 مل","en":"TUBE, SODIUM HEPARIN, VACUUM BLOOD COLLECTION, GREEN CAP, 4 ML","nup":"4110410703500","new":"787807252","old":"","cat":"draw","c":"green","kw":"هيبارين صوديوم اخضر"},{"n":83,"ar":"انبوب صوديوم هيبارين أخضر 5 مل","en":"TUBE, SODIUM HEPARIN, VACUUM BLOOD COLLECTION, GREEN CAP, 5 ML","nup":"4110410700800","new":"787807253","old":"","cat":"draw","c":"green","kw":"هيبارين صوديوم اخضر"},{"n":58,"ar":"انبوب صوديوم هيبارين أخضر 7 مل","en":"TUBE, SODIUM HEPARIN, VACUUM BLOOD COLLECTION, GREEN CAP, 7 ML, SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUMBER OF NEED","nup":"4110410702400","new":"787807844","old":"785770101","cat":"draw","c":"green","kw":"هيبارين صوديوم اخضر"},{"n":48,"ar":"انبوب صوديوم هيبارين أخضر 4 مل (متوافق مع الأتمتة)","en":"TUBE, SODIUM HEPARIN, VACUUM BLOOD COLLECTION, GREEN CAP, 4 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4110410712000","new":"787807826","old":"","cat":"draw","c":"green","kw":"هيبارين صوديوم اخضر"},{"n":49,"ar":"انبوب سترات الصوديوم 3.2% أزرق فاتح 1.8 مل","en":"TUBE, 3.2% SODIUM CITRATE, VACUUM BLOOD COLLECTION, LIGHT BLUE CAP, 1.8 ML, SINGLE USE, SINGLE USE HOLDER TO BE SUPPLIED","nup":"4114000017800","new":"787807827","old":"7887700240","cat":"draw","c":"lblue","kw":"سترات تخثر pt inr ptt coag ازرق فاتح"},{"n":34,"ar":"انبوب سترات الصوديوم 3.2% أزرق فاتح 1.8 مل (متوافق مع الأتمتة)","en":"TUBE, 3.2% SODIUM CITRATE, VACUUM BLOOD COLLECTION, LIGHT BLUE CAP, 1.8 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4110410710800","new":"787807811","old":"","cat":"draw","c":"lblue","kw":"سترات تخثر pt inr ptt coag ازرق فاتح"},{"n":35,"ar":"انبوب سترات الصوديوم 3.2% أزرق فاتح 2.7 مل (متوافق مع الأتمتة)","en":"TUBE, 3.2% SODIUM CITRATE, VACUUM BLOOD COLLECTION, LIGHT BLUE CAP, 2.7 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4110410707000","new":"787807812","old":"","cat":"draw","c":"lblue","kw":"سترات تخثر pt inr ptt coag ازرق فاتح"},{"n":36,"ar":"انبوب سترات الصوديوم 3.2% أزرق فاتح 4.5 مل (متوافق مع الأتمتة)","en":"TUBE, 3.2% SODIUM CITRATE, VACUUM BLOOD COLLECTION, LIGHT BLUE CAP, 4.5 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4110410711900","new":"787807813","old":"","cat":"draw","c":"lblue","kw":"سترات تخثر pt inr ptt coag ازرق فاتح"},{"n":50,"ar":"انبوب فلورايد/أوكزالات رمادي 2 مل","en":"TUBE, FLUORIDE/ OXALATE, VACUUM BLOOD COLLECTION, GRAY CAP, 2 ML, SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUMBER OF NE","nup":"4110410707600","new":"787807829","old":"","cat":"draw","c":"gray","kw":"فلورايد سكر جلوكوز glucose رمادي"},{"n":51,"ar":"انبوب فلورايد/أوكزالات رمادي 3 مل","en":"TUBE, FLUORIDE/ OXALATE, VACUUM BLOOD COLLECTION, GRAY CAP, 3 ML, SINGLE USE HOLDER TO BE SUPPLIED EQUAL TO NUMBER OF NE","nup":"4110410705000","new":"787807830","old":"7850100750","cat":"draw","c":"gray","kw":"فلورايد سكر جلوكوز glucose رمادي"},{"n":61,"ar":"انبوب فلورايد/أوكزالات رمادي 5 مل","en":"TUBE, FLUORIDE/ OXALATE, VACUUM BLOOD COLLECTION, GRAY CAP, 5 ML","nup":"4110410700900","new":"787807855","old":"","cat":"draw","c":"gray","kw":"فلورايد سكر جلوكوز glucose رمادي"},{"n":37,"ar":"انبوب فلورايد/أوكزالات رمادي 2 مل (متوافق مع الأتمتة)","en":"TUBE, FLUORIDE/ OXALATE, VACUUM BLOOD COLLECTION, GRAY CAP, 2 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4110410711200","new":"787807814","old":"","cat":"draw","c":"gray","kw":"فلورايد سكر جلوكوز glucose رمادي"},{"n":38,"ar":"انبوب فلورايد/أوكزالات رمادي 4 مل (متوافق مع الأتمتة)","en":"TUBE, FLUORIDE/ OXALATE, VACUUM BLOOD COLLECTION, GRAY CAP, 4 ML, COMPATIBLE WITH TOTAL LAB AUTOMATION","nup":"4110410711700","new":"787807815","old":"","cat":"draw","c":"gray","kw":"فلورايد سكر جلوكوز glucose رمادي"},{"n":84,"ar":"انبوب عناصر نادرة K2 EDTA أزرق ملكي 6 مل","en":"TUBE, TRACE ELEMENT K2EDTA, VACUUM BLOOD COLLECTION, ROYAL BLUE CAP, 6 ML","nup":"4110350601000","new":"787807260","old":"","cat":"draw","c":"royal","kw":"عناصر نادره ازرق ملكي"},{"n":85,"ar":"انبوب عناصر نادرة بمنشط تخثر أزرق ملكي 6 مل","en":"TUBE, TRACE ELEMENT SILICA WITH CLOT ACTIVATOR, VACUUM BLOOD COLLECTION, ROYAL BLUE CAP, 6 ML","nup":"4110350601100","new":"787807261","old":"","cat":"draw","c":"royal","kw":"عناصر نادره ازرق ملكي"},{"n":86,"ar":"انبوب عناصر نادرة صوديوم هيبارين أزرق ملكي 7 مل","en":"TUBE, TRACE ELEMENT SODIUM HEPARIN, VACUUM BLOOD COLLECTION, ROYAL BLUE CAP, 7 ML","nup":"4110350602000","new":"787807262","old":"","cat":"draw","c":"royal","kw":"عناصر نادره ازرق ملكي"},{"n":60,"ar":"انبوب DNA حر الخلايا (cfDNA) 10 مل","en":"TUBE, CELL FREE DNA, BLOOD COLLECTION, 10ML","nup":"4111613304900","new":"787807851","old":"","cat":"draw","c":"","kw":""},{"n":201,"ar":"ابرة فراشة (Butterfly) آمنة 23G × 0.75 إنش","en":"NEEDLE BUTTERFLY 23G 0.75IN WING SAFE","nup":"4222151213400","cat":"draw","c":"","kw":"فراشه بترفلاي butterfly scalp vein ابره 23","only":1},{"n":202,"ar":"ابرة فراشة (Scalp Vein) 24G","en":"NEEDLE SCALP VEIN BUTTERFLY 24G","nup":"4222150500600","cat":"draw","c":"","kw":"فراشه بترفلاي butterfly scalp vein ابره 24 اطفال","only":1},{"n":33,"ar":"حامل انابيب سحب الدم (Holder) 13–16 مم","en":"HOLDER, BLOOD COLLECTION TUBE, PLASTIC, 13-16 DIAMETER","nup":"4214252100000","new":"787807503","old":"","cat":"draw","c":"","kw":""},{"n":17,"ar":"واخزة آمنة للبالغين (Lancet) 30G","en":"LANCET, ADULT 30G, SINGLE USE, SAFETY, AUTOMATICALLY","nup":"4110410200200","new":"787807517","old":"785030200","cat":"draw","c":"","kw":""},{"n":203,"ar":"مسحة جمع عينة البراز لفحص سرطان القولون (FIT)","en":"","nup":"","moh":"7880801200","cat":"lab","c":"","kw":"قولون مستقيم براز fit hemosure occult stool مسحه مسحات سرطان","only":1},{"n":10,"ar":"كيس نقل عينات خطرة (Biohazard) 14×16 سم","en":"BAG, BIOHAZARD SPECIMEN TRANSPORT, BIOHAZARD LABEL, 14X16CM","nup":"4110410502000","new":"787801201","old":"785060611","cat":"lab","c":"","kw":""},{"n":9,"ar":"كيس نقل عينات خطرة (Biohazard) 15×25 سم","en":"BAG, BIOHAZARD SPECIMEN TRANSPORT, BIOHAZARD LABEL, 15X25CM","nup":"4110410501800","new":"787801199","old":"785060610","cat":"lab","c":"","kw":""},{"n":11,"ar":"كيس نقل عينات خطرة (Biohazard) 27×24 سم","en":"BAG, BIOHAZARD SPECIMEN TRANSPORT, BIOHAZARD LABEL, 27X24CM","nup":"4110410501900","new":"787801200","old":"785060612","cat":"lab","c":"","kw":""},{"n":12,"ar":"كيس نقل عينات خطرة (Biohazard) 28×15 سم","en":"BAG, BIOHAZARD SPECIMEN TRANSPORT, BIOHAZARD LABEL, 28X15CM","nup":"4110410502100","new":"787801202","old":"785060613","cat":"lab","c":"","kw":""},{"n":25,"ar":"وعاء جمع البول","en":"URINE COLLECTION VESSEL","nup":"4114000017000","new":"787805712","old":"7850606310","cat":"lab","c":"","kw":""},{"n":26,"ar":"وعاء جمع بول معقم 60 مل","en":"CONTAINER, URINE COLLECTION, 60 ML, TRANSPARENT, SCREW CAP, STERILE","nup":"4110411200500","new":"787807391","old":"785030001","cat":"lab","c":"","kw":"وعاء كوب بول معقم 60"},{"n":21,"ar":"شريط تحليل البول 10 مؤشرات","en":"STRIP, URINALYSIS TEST (10 PARAMETER DETERMINE GLUCOSE, UROBILINOGEN, KETONES, BILIRUBIN, PROTEIN), CHEMISTRY","nup":"4111613800000","new":"787803719","old":"7820200090","cat":"lab","c":"","kw":"شريط بول تحليل strip urine urinalysis dipstick شرائط"},{"n":28,"ar":"قلم أسود مقاوم للزايلين","en":"PEN, BLACK, SOLID SURFACES, XYLENE RESISTANT","nup":"4110292500100","new":"787801908","old":"785010026","cat":"lab","c":"","kw":""}];
+const SCATS=[["all","الكل"],["tubes","انابيب سحب الدم"],["draw","أدوات سحب الدم"],["lab","مستلزمات المختبر"]];
+const isTube=o=>o.cat==="draw"&&o.ar.startsWith("انبوب");
+const SCOLS=[["purple","بنفسجي","#8E5BD4"],["pink","وردي","#F09CC0"],["yellow","أصفر","#F2C024"],["red","أحمر","#D83A34"],["orange","برتقالي","#EE8A2A"],["lgreen","أخضر فاتح","#8DD06A"],["green","أخضر","#2E9E57"],["lblue","أزرق فاتح","#68B4E8"],["gray","رمادي","#8E9599"],["black","أسود","#2A2A2A"],["royal","أزرق ملكي","#2450B8"]];
+const snorm=s=>norm(s).replace(/[ؤ]/g,"و").replace(/[ئ]/g,"ي").replace(/ـ/g,"").replace(/[()،,؛]/g," ");
+SUPPLY.forEach(o=>{o.h=" "+snorm([o.ar,o.en,o.kw,(o.tr||[]).map(t=>t[1]).join(" "),(SCATS.find(c=>c[0]===o.cat)||[])[1],(SCOLS.find(c=>c[0]===o.c)||[])[1]||""].join(" "))+" ";o.k=[o.nup,o.new,o.old,o.moh||"",...(o.tr||[]).map(t=>t[0])].join(" ");});
+const tokHit=(o,t)=>{if(/^\d+$/.test(t)){if(t.length>=5&&o.k.includes(t))return true;return new RegExp("(^|[^0-9.])"+t+"([^0-9.]|$)").test(o.h);}return o.h.includes(t);};
+function supMatch(){
+  const toks=snorm(st.sq).split(/\s+/).filter(Boolean);
+  return SUPPLY.filter(o=>(st.scat==="all"||(st.scat==="tubes"?isTube(o):(!isTube(o)&&o.cat===st.scat)))&&toks.every(t=>tokHit(o,t)));
+}
+function supCode(l,v){return v?`<button type="button" class="scp" data-sc="${v}" aria-label="نسخ كود ${l}"><span>${l}</span><b>${v}</b>${svg("copy",15,2)}</button>`:`<span class="scp none"><span>${l}</span><b>لا يوجد</b></span>`;}
+function supRows(){
+  const r=supMatch();
+  if(!r.length) return `<div class="empty">لا توجد بنود تطابق بحثك. جرّب كلمة أخرى أو امسح الفلتر.</div>`;
+  let last="";
+  return r.map(o=>{const gk=isTube(o)?"tubes":o.cat;const g=gk!==last?(last=gk,`<div class="sgl">${SCATS.find(c=>c[0]===gk)[1]}</div>`):"";return g+`<article class="sup"><img src="media/sup/${o.n}.jpg?v=20261109" alt="" loading="lazy" width="60" height="60"><div class="sx"><b>${N(o.ar)}</b><span class="sen">${o.en}</span><div class="scs">${o.nup?supCode("NUPCO",o.nup):""}${o.only?(o.moh?supCode("MOH",o.moh):""):o.moh?supCode("MOH",o.moh):supCode("NEW MOH",o.new)+supCode("OLD MOH",o.old)}</div>${o.tr?`<details class="str"><summary>الأكواد التجارية (${o.tr.length})</summary>${o.tr.map(t=>`<div class="trr">${supCode("Trade",t[0])}<small>${t[1]}</small></div>`).join("")}</details>`:""}${o.note?`<p class="snote">${svg("alert",15)}${o.note}</p>`:""}</div></article>`;}).join("");
+}
+function supCount(){const n=supMatch().length,tot=SUPPLY.length;return n===tot?`${n} بندًا`:`${n} من ${tot} بندًا`;}
+function supChips(){
+  return `<div class="schips" role="group" aria-label="التصنيف">${SCATS.map(c=>`<button type="button" data-scat="${c[0]}" aria-pressed="${st.scat===c[0]}">${c[1]}</button>`).join("")}</div>`;
+}
+function supplyPage(){
+  return `<div class="page">
+    <div><h1>أكواد المستلزمات الطبية</h1></div>
+    <p class="sub">ابحث باسم الصنف أو رقم الكود، واضغط على الكود لنسخه.</p>
+    <div class="ssticky"><label class="search" for="sq">${svg("search",20)}<span hidden>ابحث في البنود</span><input id="sq" type="search" placeholder="مثال: EDTA 4 مل، أصفر، فراشة، 7878…" value="${esc(st.sq)}" autocomplete="off"></label>
+    <div id="schipsw">${supChips()}</div></div>
+    <p class="scount" id="scount">${supCount()}</p>
+    <div id="slist" class="slist">${supRows()}</div>
+    <p class="credit">المصدر: قائمة بنود مستلزمات المراكز الصحية · NUPCO | NEW MOH | OLD MOH</p>
+  </div>`;
+}
+function supRefresh(chips){$("#slist").innerHTML=supRows();$("#scount").textContent=supCount();if(chips){$("#schipsw").innerHTML=supChips();}supBind();}
+function supBind(){
+  const v=$("#view"); const ss=v.querySelector(".ssticky"),tp=$("#top"); if(ss&&tp) ss.style.top=(tp.getBoundingClientRect().height)+"px";
+  v.querySelectorAll("[data-scat]").forEach(b=>b.onclick=()=>{st.scat=b.dataset.scat;if(st.scat!=="all"&&st.scat!=="draw")st.scol="";supRefresh(true);});
+  v.querySelectorAll("[data-scol]").forEach(b=>b.onclick=()=>{st.scol=st.scol===b.dataset.scol?"":b.dataset.scol;if(st.scol&&st.scat!=="draw"&&st.scat!=="all")st.scat="all";supRefresh(true);});
+  v.querySelectorAll("[data-sc]").forEach(b=>b.onclick=async()=>{
+    try{await navigator.clipboard.writeText(b.dataset.sc);toast("تم نسخ الكود "+b.dataset.sc);}
+    catch(e){const r=document.createRange();r.selectNodeContents(b.querySelector("b"));const s=getSelection();s.removeAllRanges();s.addRange(r);toast("الكود محدد، انسخه يدويًا");}
+  });
+}
+/* ---------- binding ---------- */
+function bind(){
+  const v=$("#view");
+  v.querySelectorAll("[data-img]").forEach(b=>b.onclick=()=>{$("#vimg").src=b.dataset.img;$("#vimg").alt=b.dataset.title;$("#vtt").textContent=b.dataset.title;$("#viewer").hidden=false;document.body.style.overflow="hidden";$("#vclose").focus();});
+  v.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{st.guide=b.dataset.g;draw(true);});
+  v.querySelectorAll("[data-to]").forEach(b=>b.onclick=()=>{st.tab=b.dataset.to;st.guide=null;draw(true);});
+  v.querySelectorAll("[data-sec]").forEach(b=>b.onclick=()=>{st.afSec=b.dataset.sec;draw(false);});
+  v.querySelectorAll("[data-test]").forEach(b=>b.onclick=()=>{st.test=b.dataset.test;draw(false);});
+  const eq=$("#eq"); if(eq) eq.oninput=()=>{st.errQ=eq.value;$("#errlist").innerHTML=errRows();};
+  v.querySelectorAll("[data-copy]").forEach(b=>b.onclick=async()=>{
+    try{await navigator.clipboard.writeText(b.dataset.copy);toast("تم نسخ الكود");}
+    catch(e){const r=document.createRange();r.selectNodeContents(b.previousElementSibling.querySelector("b"));const s=getSelection();s.removeAllRanges();s.addRange(r);toast("الكود محدد، انسخه يدويًا");}
+  });
+  v.querySelectorAll("[data-dir]").forEach(b=>b.onclick=()=>{
+    if(st.dir===b.dataset.dir) return;
+    for(const l of LIPIDS){const r=convOne(l,st.vals[l.id]); st.vals[l.id]=r.out;}
+    st.dir=b.dataset.dir; draw(false);});
+  v.querySelectorAll("[data-in]").forEach(inp=>inp.oninput=()=>{
+    const l=LIPIDS.find(x=>x.id===inp.dataset.in); st.vals[l.id]=inp.value; const r=convOne(l,inp.value);
+    $("#out-"+l.id).textContent=r.out||"—"; $("#st-"+l.id).innerHTML=statusHTML(l,r.mm);});
+  const ca=$("#clearall"); if(ca) ca.onclick=()=>{for(const l of LIPIDS) st.vals[l.id]=""; draw(false); $("#in-chol").focus();};
+}
+
+function closeViewer(){$("#viewer").hidden=true;document.body.style.overflow="";}
+$("#vclose").onclick=closeViewer;
+$("#viewer").addEventListener("keydown",e=>{if(e.key==="Escape")closeViewer();});
+/* ---------- install (add to home screen) ---------- */
+let deferredPrompt=null;
+const isStandalone=()=>{try{return matchMedia("(display-mode: standalone)").matches||navigator.standalone===true}catch(e){return false}};
+const isIOS=()=>/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+function installCard(){
+  if(isStandalone()) return "";
+  return `<section class="card install" ${deferredPrompt?"":"hidden"}><div class="ins-row"><img src="media/logo-white.png" alt="" class="ins-ic"><div class="ins-tx"><b>ثبّت التطبيق على جهازك</b><span>أيقونة بشعار التجمع على الشاشة الرئيسية أو سطح المكتب</span></div></div><button type="button" class="ins-btn" id="insBtn">${svg("down",18,2.2)}تثبيت التطبيق</button></section>`;
+}
+function bindInstall(){
+  const b=$("#insBtn"); if(!b) return;
+  b.onclick=async()=>{
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    try{await deferredPrompt.userChoice}catch(e){}
+    deferredPrompt=null; const c=document.querySelector(".install"); if(c) c.hidden=true;
+  };
+}
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;const c=document.querySelector(".install");if(c)c.hidden=false;});
+window.addEventListener("appinstalled",()=>{deferredPrompt=null;const c=document.querySelector(".install");if(c)c.remove();});
+try{if("serviceWorker" in navigator&&location.protocol==="https:"&&!/claude/.test(location.hostname))navigator.serviceWorker.register("sw.js").catch(()=>{});}catch(e){}
+new MutationObserver(()=>bindInstall()).observe(document.getElementById("view"),{childList:true});
+/* ---------- boot ---------- */
+(function(){
+  const h=location.hash.slice(1);
+  if(TABS.some(t=>t.id===h)) st.tab=h;
+  else if(GUIDES.some(g=>g.id===h)) st.guide=h;
+  draw(false);
+})();
+</script>
+
+</body>
+</html>
